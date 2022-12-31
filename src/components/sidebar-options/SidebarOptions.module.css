@@ -1,0 +1,24 @@
+.sidebaroption {
+  color: aliceblue;
+  margin: 0;
+  padding: 0.8rem 0.8rem 0.8rem 1.5rem;
+  background-image: transparent;
+  text-align: left;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.2rem 0;
+  transition: all 0.3s;
+  font-size: 1.2rem;
+  user-select: none;
+}
+.sidebaroption:hover {
+  transform: scale(1.05);
+
+  background-color: rgb(255, 255, 255, 0.35);
+  -webkit-transition: background-color 0.3s linear;
+  -ms-transition: background-color 0.3s linear;
+  transition: all 0.3s linear;
+}

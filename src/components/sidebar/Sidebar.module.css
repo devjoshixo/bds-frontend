@@ -1,0 +1,27 @@
+.sidebar {
+  width: 13.8rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -10.9rem;
+  background-color: #0a2b3d;
+  transition: all 0.7s;
+  z-index: 1000;
+}
+.active {
+  width: 13.5rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0rem;
+  background-color: #0a2b3d;
+  transition: all 0.7s;
+}
+/* 
+.sidebar:hover {
+  left: 0;
+} */
+.optionicon {
+  width: 20px;
+  fill: aliceblue;
+}
