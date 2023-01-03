@@ -1,12 +1,16 @@
 import styles from "./Contacts.module.css";
 import React from "react";
 import { useEffect } from "react";
+import { useState } from "react";
 const Contacts = (props) => {
+  const [contactsData, updateContactsData] = useState();
+
   useEffect(() => {
     fetch("http://localhost:5000/contacts")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        updateContactsData(data);
       });
   });
 
