@@ -1,7 +1,6 @@
 import styles from "./PageBody.module.css";
 
 const PageBody = (props) => {
-  console.log(props);
   return (
     <div className={styles.pagewrapper}>
       {/* page heading */}
