@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 const Contacts = (props) => {
   useEffect(() => {
-    fetch("http://loc")
+    fetch("http://localhost:5000/contacts")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
