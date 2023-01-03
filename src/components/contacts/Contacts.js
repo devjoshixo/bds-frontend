@@ -1,6 +1,15 @@
 import styles from "./Contacts.module.css";
-
+import React from "react";
+import { useEffect } from "react";
 const Contacts = (props) => {
+  useEffect(() => {
+    fetch("http://loc")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  });
+
   return (
     <div className={styles.contacts}>
       <table>
