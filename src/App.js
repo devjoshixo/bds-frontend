@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./App.module.css";
 import Sidebar from "./components/sidebar/Sidebar";
 import PageBody from "./components/pagebody/PageBody";
+import Contacts from "./components/contacts/Contacts";
 
 function App() {
   // const sidebarStatus
@@ -22,7 +23,9 @@ function App() {
         toggleSidebarHandler={toggleSidebarHandler}
         sidebarStatus={sidebarStatus}
       ></Sidebar>
-      <PageBody heading={"CONTACTS"}></PageBody>
+      <PageBody heading={"CONTACTS"}>
+        <Contacts></Contacts>
+      </PageBody>
     </div>
   );
 }

@@ -1,0 +1,14 @@
+.contacts {
+  background-color: rgb(230, 230, 230);
+}
+table,
+th,
+td {
+  height: 1rem;
+}
+table {
+  width: 100%;
+}
+td {
+  height: 1rem;
+}
