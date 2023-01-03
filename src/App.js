@@ -27,10 +27,11 @@ function App() {
   };
 
   const menuToggleHandler = (id) => {
-    console.log(id);
     setToShow(id);
     return id;
   };
+
+  var count = 0;
 
   return (
     <div className={styles.App}>

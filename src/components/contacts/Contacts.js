@@ -11,7 +11,7 @@ const Contacts = (props) => {
       .then((data) => {
         updateContactsData(data);
       });
-  }, []);
+  });
 
   return (
     <div className={styles.contacts}>
@@ -31,5 +31,4 @@ const Contacts = (props) => {
     </div>
   );
 };
-
 export default Contacts;
