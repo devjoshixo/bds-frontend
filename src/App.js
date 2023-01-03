@@ -15,6 +15,7 @@ function App() {
   const closeSidebarHandler = () => {
     setSidebarStatus(false);
   };
+  var count = 0;
   return (
     <div className={styles.App}>
       <Sidebar
@@ -22,7 +23,7 @@ function App() {
         toggleSidebarHandler={toggleSidebarHandler}
         sidebarStatus={sidebarStatus}
       ></Sidebar>
-      <PageBody heading={"CONTACTS"}>
+      <PageBody count={count + 1} heading={"CONTACTS"}>
         <Contacts></Contacts>
       </PageBody>
     </div>

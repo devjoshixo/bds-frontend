@@ -4,18 +4,15 @@ import { useEffect } from "react";
 import { useState } from "react";
 const Contacts = (props) => {
   const [contactsData, updateContactsData] = useState();
-  let count = 0;
   useEffect(() => {
     fetch("http://localhost:5000/contacts")
       .then((response) => response.json())
       .then((data) => {
-        count = count + 1;
         updateContactsData(data);
       });
-  }, []);
+  }, [contactsData]);
 
-  console.log(count);
-
+  console.log(contactsData.length);
   return (
     <div className={styles.contacts}>
       <table>
