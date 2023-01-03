@@ -1,5 +1,6 @@
 import styles from "./Contacts.module.css";
 import React from "react";
+import ContactRow from "./ContactRow";
 import { useEffect } from "react";
 import { useState } from "react";
 const Contacts = (props) => {
@@ -10,9 +11,24 @@ const Contacts = (props) => {
       .then((data) => {
         updateContactsData(data);
       });
-  }, [contactsData]);
+  }, []);
 
-  console.log(contactsData.length);
+  const addNewRow = () => {
+    var list = [];
+    for (var i in contactsData) {
+      var contact = contactsData[i];
+      list.push(
+        <ContactRow
+          name={contact["name"]}
+          email={contact["email"]}
+          mobile={contact["mobile"]}
+          whatsappMobile={contact["whatsappMobile"]}
+        ></ContactRow>
+      );
+    }
+    return list;
+  };
+  console.log(contactsData);
   return (
     <div className={styles.contacts}>
       <table>
@@ -23,6 +39,7 @@ const Contacts = (props) => {
             <th>W.A. Mobile</th>
             <th>E.mail</th>
           </tr>
+          {addNewRow()}
         </tbody>
       </table>
     </div>

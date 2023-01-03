@@ -9,23 +9,39 @@ function App() {
 
   const [sidebarStatus, setSidebarStatus] = useState(false);
 
+  const [toShow, setToShow] = useState("dashboard");
+
   const toggleSidebarHandler = () => {
     setSidebarStatus(!sidebarStatus);
   };
   const closeSidebarHandler = () => {
     setSidebarStatus(false);
   };
-  var count = 0;
+
+  const rendered = (toShow) => {
+    if (toShow === "Contacts") {
+      return <Contacts></Contacts>;
+    } else if (toShow === "Dashboard") {
+      return <div>dashboard</div>;
+    }
+  };
+
+  const menuToggleHandler = (id) => {
+    console.log(id);
+    setToShow(id);
+    return id;
+  };
+
   return (
     <div className={styles.App}>
       <Sidebar
         closeSidebar={closeSidebarHandler}
         toggleSidebarHandler={toggleSidebarHandler}
         sidebarStatus={sidebarStatus}
+        menuToggleHandler={menuToggleHandler}
       ></Sidebar>
-      <PageBody count={count + 1} heading={"CONTACTS"}>
-        <Contacts></Contacts>
-      </PageBody>
+
+      <PageBody heading={toShow}>{rendered(toShow)}</PageBody>
     </div>
   );
 }

@@ -16,6 +16,7 @@ const Sidebar = (props) => {
         name="Dashboard"
         closeSidebar={props.closeSidebar}
         sidebarStatus={props.sidebarStatus}
+        menuToggleHandler={props.menuToggleHandler}
       >
         <svg
           className={styles.optionicon}
@@ -29,6 +30,7 @@ const Sidebar = (props) => {
         name="Schedules"
         closeSidebar={props.closeSidebar}
         sidebarStatus={props.sidebarStatus}
+        menuToggleHandler={props.menuToggleHandler}
       >
         <svg
           className={styles.optionicon}
@@ -42,6 +44,7 @@ const Sidebar = (props) => {
         name="Contacts"
         closeSidebar={props.closeSidebar}
         sidebarStatus={props.sidebarStatus}
+        menuToggleHandler={props.menuToggleHandler}
       >
         <svg
           className={styles.optionicon}
@@ -55,6 +58,7 @@ const Sidebar = (props) => {
         name="Template"
         closeSidebar={props.closeSidebar}
         sidebarStatus={props.sidebarStatus}
+        menuToggleHandler={props.menuToggleHandler}
       >
         <svg
           className={styles.optionicon}
@@ -68,6 +72,7 @@ const Sidebar = (props) => {
         name="Set Schedule"
         closeSidebar={props.closeSidebar}
         sidebarStatus={props.sidebarStatus}
+        menuToggleHandler={props.menuToggleHandler}
       >
         <svg
           className={styles.optionicon}
@@ -81,6 +86,7 @@ const Sidebar = (props) => {
         name="Settings"
         closeSidebar={props.closeSidebar}
         sidebarStatus={props.sidebarStatus}
+        menuToggleHandler={props.menuToggleHandler}
       >
         <svg
           className={styles.optionicon}
@@ -95,6 +101,7 @@ const Sidebar = (props) => {
         name="Webinars"
         closeSidebar={props.closeSidebar}
         sidebarStatus={props.sidebarStatus}
+        menuToggleHandler={props.menuToggleHandler}
       >
         <svg
           className={styles.optionicon}
