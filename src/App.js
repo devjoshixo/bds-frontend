@@ -15,7 +15,6 @@ function App() {
   const closeSidebarHandler = () => {
     setSidebarStatus(false);
   };
-
   return (
     <div className={styles.App}>
       <Sidebar
