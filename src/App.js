@@ -31,8 +31,6 @@ function App() {
     return id;
   };
 
-  var count = 0;
-
   return (
     <div className={styles.App}>
       <Sidebar

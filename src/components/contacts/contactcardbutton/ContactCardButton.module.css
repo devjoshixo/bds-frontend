@@ -1,0 +1,18 @@
+.buttondiv {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  align-items: center;
+}
+.cardopenbutton {
+  width: 15px;
+  height: 15px;
+  fill: black;
+}
+.cardopenbutton:hover {
+  width: 15px;
+  height: 15px;
+  fill: rgb(133, 133, 133);
+}
