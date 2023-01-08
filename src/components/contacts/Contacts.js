@@ -5,10 +5,12 @@ import ContactRow from "./ContactRow";
 import { useEffect } from "react";
 import { useState } from "react";
 import fetchContacts from "../../API calls/fetchContacts";
+import Loader from "../loader/Loader";
 const Contacts = (props) => {
   const [cardStatus, SetCardStatus] = useState(false);
   const [contactsData, updateContactsData] = useState([]);
   const [cardData, setCardData] = useState("");
+  const [loadingStatus, setLoadingStatus] = useState(true);
 
   const CardOpenHandler = (userData) => {
     SetCardStatus(true);
@@ -21,6 +23,7 @@ const Contacts = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       updateContactsData(await fetchContacts());
+      setLoadingStatus(false);
     };
     fetchData();
   }, []);
@@ -43,26 +46,32 @@ const Contacts = (props) => {
     }
     return list;
   };
+
   return (
     <div className={styles.contacts}>
-      <table>
-        <tbody>
-          <tr className={styles.a}>
-            <th>
-              <div className={styles.select}>
-                <input type="checkbox"></input>
-              </div>
-            </th>
-            <th>actions</th>
+      {loadingStatus ? (
+        <Loader />
+      ) : (
+        <table>
+          <tbody>
+            <tr className={styles.a}>
+              <th>
+                <div className={styles.select}>
+                  <input type="checkbox"></input>
+                </div>
+              </th>
+              <th>actions</th>
 
-            <th>Name</th>
-            <th>mobile</th>
-            <th>W.A. Mobile</th>
-            <th>E.mail</th>
-          </tr>
-          {addNewRow()}
-        </tbody>
-      </table>
+              <th>Name</th>
+              <th>mobile</th>
+              <th>W.A. Mobile</th>
+              <th>E.mail</th>
+            </tr>
+            {addNewRow()}
+          </tbody>
+        </table>
+      )}
+
       <ContactCard
         cardStatus={cardStatus}
         CardCloseHandler={CardCloseHandler}

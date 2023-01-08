@@ -35,7 +35,7 @@ const ContactCard = (props) => {
         </div>
       </div>
       <div className={styles.closecard} onClick={props.CardCloseHandler}>
-        X
+        &#x2715;
       </div>
     </div>
   );

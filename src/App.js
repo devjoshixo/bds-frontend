@@ -39,8 +39,13 @@ function App() {
         sidebarStatus={sidebarStatus}
         menuToggleHandler={menuToggleHandler}
       ></Sidebar>
-
       <PageBody heading={toShow}>{rendered(toShow)}</PageBody>
+
+      <script
+        type="text/javascript"
+        async
+        src="https://tenor.com/embed.js"
+      ></script>
     </div>
   );
 }

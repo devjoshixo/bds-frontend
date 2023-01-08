@@ -14,10 +14,11 @@ const ContactRow = (props) => {
           email={props.email}
           whatsappMobile={props.whatsappMobile}
           cid={props.cid}
+          fetchData={props.fetchData}
         />
       </td>
 
-      <td>{props.name}</td>
+      <td>{`${props.name.split(" ")[0]} ${props.name.split(" ")[1]}`}</td>
       <td>{props.mobile}</td>
       <td>{props.whatsappMobile}</td>
       <td>{props.email}</td>

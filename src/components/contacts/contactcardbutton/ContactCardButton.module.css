@@ -3,7 +3,7 @@
   height: 100%;
   display: flex;
   justify-content: flex-start;
-  gap: 1.5rem;
+  gap: 1.2rem;
   align-items: center;
 }
 .cardopenbutton {
@@ -12,6 +12,17 @@
   fill: black;
 }
 .cardopenbutton:hover {
+  width: 15px;
+  height: 15px;
+  fill: rgb(133, 133, 133);
+}
+.deleterowbutton {
+  width: 15px;
+  height: 15px;
+
+  fill: rgb(1, 0, 0);
+}
+.deleterowbutton:hover {
   width: 15px;
   height: 15px;
   fill: rgb(133, 133, 133);

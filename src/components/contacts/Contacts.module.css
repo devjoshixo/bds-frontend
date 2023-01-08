@@ -4,7 +4,29 @@
   font-family: "Bebas Neue", cursive;
   font-weight: 500;
 }
+.contacts {
+  height: 90%;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+}
+.contacts::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 20px;
+  background-color: rgba(188, 198, 206, 0.111);
+  /* border: 01px solid rgba(128, 128, 128, 0.183); */
+}
 
+.contacts::-webkit-scrollbar-track {
+}
+
+.contacts::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 56, 0.627);
+  border-radius: 20px;
+}
 table,
 th,
 td {
