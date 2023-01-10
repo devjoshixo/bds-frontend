@@ -6,20 +6,17 @@ const DeleteContactModal = (props) => {
       <div className={styles.warningmodal}>
         <div
           className={styles.modalmessage}
-        >{`are you sure you want to delete the contact(s) ${props.cid}`}</div>
+        >{`are you sure you want to delete the contact(s)`}</div>
         <div className={styles.modalbuttonscontainer}>
           <div
             className={`${styles.cancelbutton} ${styles.modalbutton}`}
-            onClick={props.cancel}
+            // onClick={() => {}}
           >
             Cancel
           </div>
           <div
             className={`${styles.yesbutton} ${styles.modalbutton}`}
-            onClick={() => {
-              console.log(props.cid);
-              //   props.delete(props.cid);
-            }}
+            // onClick={() => {}}
           >
             Yes
           </div>

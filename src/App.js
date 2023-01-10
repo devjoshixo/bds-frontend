@@ -9,7 +9,7 @@ function App() {
 
   const [sidebarStatus, setSidebarStatus] = useState(false);
 
-  const [toShow, setToShow] = useState("dashboard");
+  const [toShow, setToShow] = useState("Dashboard");
 
   const toggleSidebarHandler = () => {
     setSidebarStatus(!sidebarStatus);

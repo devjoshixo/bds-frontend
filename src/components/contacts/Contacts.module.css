@@ -5,7 +5,7 @@
   font-weight: 500;
 }
 .contacts {
-  height: 90%;
+  max-height: 90%;
   overflow: scroll;
   display: flex;
   flex-direction: column;
