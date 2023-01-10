@@ -16,6 +16,10 @@
   left: 0rem;
   background-color: #0a2b3d;
   transition: all 0.7s;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 /* 
 .sidebar:hover {
@@ -24,4 +28,8 @@
 .optionicon {
   width: 20px;
   fill: aliceblue;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

@@ -1,6 +1,6 @@
 import SidebarOptions from "../sidebar-options/SidebarOptions";
 import SidebarHeader from "./sidebarheader/SidebarHeader";
-import styles from "./Sidebar.module.css";
+import styles from "./Sidebar.module.scss";
 
 const Sidebar = (props) => {
   return (

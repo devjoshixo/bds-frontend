@@ -3,6 +3,7 @@ import styles from "./App.module.css";
 import Sidebar from "./components/sidebar/Sidebar";
 import PageBody from "./components/pagebody/PageBody";
 import Contacts from "./components/contacts/Contacts";
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   // const sidebarStatus
@@ -20,9 +21,9 @@ function App() {
 
   const rendered = (toShow) => {
     if (toShow === "Contacts") {
-      return <Contacts></Contacts>;
+      return <Contacts />;
     } else if (toShow === "Dashboard") {
-      return <div>dashboard</div>;
+      return <Dashboard setToShow={setToShow} />;
     }
   };
 
