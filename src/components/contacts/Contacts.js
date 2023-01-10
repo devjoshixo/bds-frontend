@@ -13,7 +13,7 @@ const Contacts = (props) => {
   const [contactsData, updateContactsData] = useState([]);
   const [cardData, setCardData] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(true);
-  const [showDeleteWarning, setShowDeleteWarning] = useState(false);
+  // const [showDeleteWarning, setShowDeleteWarning] = useState(false);
 
   const CardOpenHandler = (userData) => {
     SetCardStatus(true);
@@ -23,14 +23,8 @@ const Contacts = (props) => {
     SetCardStatus(false);
   };
 
-  const showDeleteWarningHandler = () => {
-    setShowDeleteWarning(true);
-  };
-
   const deleteRowHandler = async (cid) => {
-    console.log(`delete this ${cid}`);
     await deleteIndividual(cid);
-    setShowDeleteWarning(false);
   };
 
   useEffect(() => {
@@ -54,8 +48,9 @@ const Contacts = (props) => {
           key={contact["_id"]}
           cid={contact["_id"]}
           CardOpenHandler={CardOpenHandler}
-          showDeleteWarning={showDeleteWarning}
-          showDeleteWarningHandler={showDeleteWarningHandler}
+          // showDeleteWarning={showDeleteWarning}
+          // setShowDeleteWarning={setShowDeleteWarning}
+          // showDeleteWarningHandler={showDeleteWarningHandler}
         ></ContactRow>
       );
     }
@@ -86,7 +81,7 @@ const Contacts = (props) => {
           </tbody>
         </table>
       )}
-      {showDeleteWarning ? (
+      {/* {showDeleteWarning ? (
         <DeleteContactModal
           cancel={() => {
             setShowDeleteWarning(false);
@@ -95,7 +90,7 @@ const Contacts = (props) => {
             deleteRowHandler(cid);
           }}
         />
-      ) : null}
+      ) : null} */}
 
       <ContactCard
         cardStatus={cardStatus}
