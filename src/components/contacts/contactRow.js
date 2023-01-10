@@ -15,6 +15,7 @@ const ContactRow = (props) => {
           whatsappMobile={props.whatsappMobile}
           cid={props.cid}
           fetchData={props.fetchData}
+          showDeleteWarningHandler={props.showDeleteWarningHandler}
           // showDeleteWarningHandler={props.showDeleteWarningHandler}
           // showDeleteWarning={props.showDeleteWarning}
           // setShowDeleteWarning={props.setShowDeleteWarning}

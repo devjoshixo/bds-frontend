@@ -14,7 +14,8 @@ const Contacts = (props) => {
   const [cardData, setCardData] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(true);
   const [updateContacts, setUpdateContacts] = useState(null);
-  // const [showDeleteWarning, setShowDeleteWarning] = useState(false);
+  const [showDeleteWarning, setShowDeleteWarning] = useState(false);
+  const [delCid, setDelCid] = useState("");
 
   const CardOpenHandler = (userData) => {
     SetCardStatus(true);
@@ -24,17 +25,23 @@ const Contacts = (props) => {
     SetCardStatus(false);
   };
 
+  const showDeleteWarningHandler = (cid) => {
+    setDelCid(cid);
+    setShowDeleteWarning(true);
+  };
   const deleteRowHandler = async (cid) => {
     await deleteIndividual(cid);
+    setShowDeleteWarning(false);
+    setUpdateContacts(cid);
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      updateContactsData(await fetchContacts(0, 50));
+      updateContactsData(await fetchContacts(0, 10));
       setLoadingStatus(false);
     };
     fetchData();
-  }, []);
+  }, [updateContacts]);
 
   const addNewRow = () => {
     var list = [];
@@ -49,6 +56,7 @@ const Contacts = (props) => {
           key={contact["_id"]}
           cid={contact["_id"]}
           CardOpenHandler={CardOpenHandler}
+          showDeleteWarningHandler={showDeleteWarningHandler}
           // setUpdateContacts={setUpdateContacts}
         ></ContactRow>
       );
@@ -80,7 +88,15 @@ const Contacts = (props) => {
           </tbody>
         </table>
       )}
-
+      {showDeleteWarning ? (
+        <DeleteContactModal
+          cancel={() => {
+            setShowDeleteWarning(false);
+          }}
+          cid={delCid}
+          delete={deleteRowHandler}
+        />
+      ) : null}
       <ContactCard
         cardStatus={cardStatus}
         CardCloseHandler={CardCloseHandler}

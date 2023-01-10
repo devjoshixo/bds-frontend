@@ -10,13 +10,15 @@ const DeleteContactModal = (props) => {
         <div className={styles.modalbuttonscontainer}>
           <div
             className={`${styles.cancelbutton} ${styles.modalbutton}`}
-            // onClick={() => {}}
+            onClick={props.cancel}
           >
             Cancel
           </div>
           <div
             className={`${styles.yesbutton} ${styles.modalbutton}`}
-            // onClick={() => {}}
+            onClick={() => {
+              props.delete(props.cid);
+            }}
           >
             Yes
           </div>
