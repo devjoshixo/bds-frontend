@@ -6,11 +6,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import fetchContacts from "../../API calls/fetchContacts";
 import Loader from "../loader/Loader";
+import deleteIndividual from "../../API calls/deleteContact";
+import DeleteContactModal from "./deleteContactModal/deleteContactModal";
 const Contacts = (props) => {
   const [cardStatus, SetCardStatus] = useState(false);
   const [contactsData, updateContactsData] = useState([]);
   const [cardData, setCardData] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(true);
+  const [showDeleteWarning, setShowDeleteWarning] = useState(false);
 
   const CardOpenHandler = (userData) => {
     SetCardStatus(true);
@@ -18,6 +21,16 @@ const Contacts = (props) => {
   };
   const CardCloseHandler = () => {
     SetCardStatus(false);
+  };
+
+  const showDeleteWarningHandler = () => {
+    setShowDeleteWarning(true);
+  };
+
+  const deleteRowHandler = async (cid) => {
+    console.log(`delete this ${cid}`);
+    await deleteIndividual(cid);
+    setShowDeleteWarning(false);
   };
 
   useEffect(() => {
@@ -41,6 +54,8 @@ const Contacts = (props) => {
           key={contact["_id"]}
           cid={contact["_id"]}
           CardOpenHandler={CardOpenHandler}
+          showDeleteWarning={showDeleteWarning}
+          showDeleteWarningHandler={showDeleteWarningHandler}
         ></ContactRow>
       );
     }
@@ -71,6 +86,16 @@ const Contacts = (props) => {
           </tbody>
         </table>
       )}
+      {showDeleteWarning ? (
+        <DeleteContactModal
+          cancel={() => {
+            setShowDeleteWarning(false);
+          }}
+          delete={(cid) => {
+            deleteRowHandler(cid);
+          }}
+        />
+      ) : null}
 
       <ContactCard
         cardStatus={cardStatus}

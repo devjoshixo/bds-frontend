@@ -2,7 +2,7 @@ import ContactCardButton from "./contactcardbutton/ContactCardButton";
 
 const ContactRow = (props) => {
   return (
-    <tr>
+    <tr id={`${props.cid}`}>
       <td>
         <input type="checkbox"></input>
       </td>
@@ -15,6 +15,8 @@ const ContactRow = (props) => {
           whatsappMobile={props.whatsappMobile}
           cid={props.cid}
           fetchData={props.fetchData}
+          showDeleteWarningHandler={props.showDeleteWarningHandler}
+          showDeleteWarning={props.showDeleteWarning}
         />
       </td>
 
