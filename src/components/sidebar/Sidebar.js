@@ -1,4 +1,4 @@
-import SidebarOptions from "../sidebar-options/SidebarOptions";
+import SidebarOptions from "./sidebar-options/SidebarOptions";
 import SidebarHeader from "./sidebarheader/SidebarHeader";
 import styles from "./Sidebar.module.scss";
 
