@@ -1,4 +1,4 @@
-import styles from "./ContactCard.module.css";
+import styles from "./ContactCard.module.scss";
 
 const ContactCard = (props) => {
   return (
@@ -15,11 +15,11 @@ const ContactCard = (props) => {
           >
             Name
             <br />
-            mobile
+            Mobile
             <br />
             E-mail
             <br />
-            whatsapp
+            Whatsapp
           </div>
           <div
             className={`${styles.detailvalues} ${styles.detailsubcontainer}`}
@@ -32,6 +32,14 @@ const ContactCard = (props) => {
             <br />
             {props.userData.whatsappMobile}
           </div>
+        </div>
+        <div className={styles.cardbuttons}>
+          <button id={styles.editbutton} className={styles.cardbutton}>
+            Edit
+          </button>
+          <button id={styles.deletebutton} className={styles.cardbutton}>
+            Delete
+          </button>
         </div>
       </div>
       <div className={styles.closecard} onClick={props.CardCloseHandler}>
