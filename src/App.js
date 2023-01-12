@@ -13,8 +13,11 @@ function App() {
   const [toShow, setToShow] = useState("Dashboard");
 
   const hashChangeHandler = (e) => {
-    console.log(e);
-    setToShow(decodeURI(e.target.location.hash.split("#")[1]));
+    if (e.target.location.hash.split("#")[1] === undefined) {
+      setToShow("Dashboard");
+    } else {
+      setToShow(decodeURI(e.target.location.hash.split("#")[1]));
+    }
   };
 
   useEffect(() => {
