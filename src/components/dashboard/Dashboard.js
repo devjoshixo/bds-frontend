@@ -20,7 +20,7 @@ const dashboard = (props) => {
             WhatsApp Official Business API Solution. Send message through API
             without any limitation.
           </p>
-          <a href="W.A. Team">
+          <a href="#W.A. Team">
             <button
               onClick={() => {
                 props.setToShow("W.A. Team");
@@ -43,7 +43,7 @@ const dashboard = (props) => {
             Manage all your chats in a unified team inbox. One stop solution for
             all your customers.
           </p>
-          <a href="Auto WAP">
+          <a href="#Auto WAP">
             <button
               onClick={() => {
                 props.setToShow("Auto WAP");
