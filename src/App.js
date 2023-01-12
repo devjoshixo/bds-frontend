@@ -50,7 +50,6 @@ function App() {
   return (
     <div className={styles.App}>
       <Sidebar
-        toShow={toShow}
         closeSidebar={closeSidebarHandler}
         toggleSidebarHandler={toggleSidebarHandler}
         sidebarStatus={sidebarStatus}
