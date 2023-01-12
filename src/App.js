@@ -12,9 +12,25 @@ function App() {
 
   const [toShow, setToShow] = useState("Dashboard");
 
+  const [selectedAPI, setSelectedAPI] = useState("Dashboard");
+
   const hashChangeHandler = (e) => {
     if (e.target.location.hash.split("#")[1] === undefined) {
       setToShow("Dashboard");
+      setSelectedAPI("Dashboard");
+    } else if (
+      decodeURI(e.target.location.hash.split("#")[1]) === "Dashboard"
+    ) {
+      setSelectedAPI("Dashboard");
+      setToShow("Dashboard");
+    } else if (
+      decodeURI(e.target.location.hash.split("#")[1]) === "W.A. Team"
+    ) {
+      setSelectedAPI("W.A. Team");
+      setToShow("W.A. Team");
+    } else if (decodeURI(e.target.location.hash.split("#")[1]) === "Auto WAP") {
+      setSelectedAPI("Auto WAP");
+      setToShow("Auto WAP");
     } else {
       setToShow(decodeURI(e.target.location.hash.split("#")[1]));
     }
@@ -50,12 +66,15 @@ function App() {
   return (
     <div className={styles.App}>
       <Sidebar
+        selectedAPI={selectedAPI}
         closeSidebar={closeSidebarHandler}
         toggleSidebarHandler={toggleSidebarHandler}
         sidebarStatus={sidebarStatus}
         menuToggleHandler={menuToggleHandler}
       ></Sidebar>
-      <PageBody heading={toShow}>{rendered(toShow)}</PageBody>
+      <PageBody selectedAPI={selectedAPI} heading={toShow}>
+        {rendered(toShow)}
+      </PageBody>
     </div>
   );
 }

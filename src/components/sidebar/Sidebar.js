@@ -1,36 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SidebarOptions from "./sidebar-options/SidebarOptions";
 import SidebarHeader from "./sidebarheader/SidebarHeader";
 import styles from "./Sidebar.module.scss";
-import { FaWhatsappSquare } from "react-icons/fa";
 
 const Sidebar = (props) => {
-  const [selectedAPI, setSelectedAPI] = useState("Dashboard");
-
-  const hashChangeHandler = (e) => {
-    if (e.target.location.hash.split("#")[1] === undefined) {
-      setSelectedAPI("Dashboard");
-    } else if (
-      decodeURI(e.target.location.hash.split("#")[1]) === "Dashboard"
-    ) {
-      setSelectedAPI("Dashboard");
-    } else if (
-      decodeURI(e.target.location.hash.split("#")[1]) === "W.A. Team"
-    ) {
-      setSelectedAPI("W.A. Team");
-    } else if (decodeURI(e.target.location.hash.split("#")[1]) === "Auto WAP") {
-      setSelectedAPI("Auto WAP");
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("hashchange", hashChangeHandler);
-    return () => {
-      window.removeEventListener("hashchange", hashChangeHandler);
-    };
-  }, []);
-
-  if (selectedAPI === "Dashboard") {
+  if (props.selectedAPI === "Dashboard") {
     return (
       <div
         className={`${styles.sidebar} ${props.sidebarStatus && styles.active}`}
@@ -84,7 +58,7 @@ const Sidebar = (props) => {
         </SidebarOptions>
       </div>
     );
-  } else if (selectedAPI === "W.A. Team") {
+  } else if (props.selectedAPI === "W.A. Team") {
     return (
       <div
         className={`${styles.sidebar} ${props.sidebarStatus && styles.active}`}
@@ -195,7 +169,7 @@ const Sidebar = (props) => {
         </SidebarOptions>
       </div>
     );
-  } else if (selectedAPI === "Auto WAP") {
+  } else if (props.selectedAPI === "Auto WAP") {
     return (
       <div
         className={`${styles.sidebar} ${props.sidebarStatus && styles.active}`}
