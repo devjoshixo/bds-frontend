@@ -41,6 +41,7 @@
 }
 .hamburger:hover {
   transform: scale(1.05);
+  cursor: pointer;
 }
 .ham1 {
   background-color: rgb(255, 255, 255);
