@@ -16,6 +16,8 @@ const Contacts = (props) => {
   const [updateContacts, setUpdateContacts] = useState(null);
   const [showDeleteWarning, setShowDeleteWarning] = useState(false);
   const [delCid, setDelCid] = useState("");
+  const [dataLength, setDataLength] = useState(10);
+  const [startFrom, setStartFrom] = useState(0);
 
   const CardOpenHandler = (userData) => {
     SetCardStatus(true);
@@ -37,11 +39,11 @@ const Contacts = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      updateContactsData(await fetchContacts(0, 10));
+      updateContactsData(await fetchContacts(startFrom, dataLength));
       setLoadingStatus(false);
     };
     fetchData();
-  }, [updateContacts]);
+  }, [updateContacts, dataLength, startFrom]);
 
   const addNewRow = () => {
     var list = [];
@@ -65,43 +67,77 @@ const Contacts = (props) => {
   };
 
   return (
-    <div className={styles.contacts}>
-      {loadingStatus ? (
-        <Loader />
-      ) : (
-        <table>
-          <tbody>
-            <tr className={styles.a}>
-              <th>
-                <div className={styles.select}>
-                  <input type="checkbox"></input>
-                </div>
-              </th>
-              <th>actions</th>
+    <div className={styles.contactWapper}>
+      <div className={styles.contacts}>
+        {loadingStatus ? (
+          <Loader />
+        ) : (
+          <table>
+            <tbody>
+              <tr className={styles.a}>
+                <th>
+                  <div className={styles.select}>
+                    <input type="checkbox"></input>
+                  </div>
+                </th>
+                <th>actions</th>
 
-              <th>Name</th>
-              <th>mobile</th>
-              <th>W.A. Mobile</th>
-              <th>E.mail</th>
-            </tr>
-            {addNewRow()}
-          </tbody>
-        </table>
-      )}
-      {showDeleteWarning ? (
-        <DeleteContactModal
-          cancel={() => {
-            setShowDeleteWarning(false);
-          }}
-          cid={delCid}
-          delete={deleteRowHandler}
-        />
-      ) : null}
-      <ContactCard
-        cardStatus={cardStatus}
-        CardCloseHandler={CardCloseHandler}
-        userData={cardData}
-      ></ContactCard>
+                <th>Name</th>
+                <th>mobile</th>
+                <th>W.A. Mobile</th>
+                <th>E.mail</th>
+              </tr>
+              {addNewRow()}
+            </tbody>
+          </table>
+        )}
+        {showDeleteWarning ? (
+          <DeleteContactModal
+            cancel={() => {
+              setShowDeleteWarning(false);
+            }}
+            cid={delCid}
+            delete={deleteRowHandler}
+          />
+        ) : null}
+        <ContactCard
+          cardStatus={cardStatus}
+          CardCloseHandler={CardCloseHandler}
+          userData={cardData}
+        ></ContactCard>
+      </div>
+      <div className={styles.contactoptions}>
+        <div className={styles.datalength}>
+          <div className={styles.optiontext}>No. of contacts</div>
+          <div className={styles.n_rows} onClick={() => setDataLength(10)}>
+            10
+          </div>
+          <div className={styles.n_rows} onClick={() => setDataLength(50)}>
+            50
+          </div>
+          <div className={styles.n_rows} onClick={() => setDataLength(100)}>
+            100
+          </div>
+        </div>
+        <div className={styles.driver}>
+          <div
+            className={styles.previous}
+            onClick={() => {
+              if (startFrom >= dataLength) {
+                setStartFrom(startFrom - dataLength);
+              } else {
+                setStartFrom(0);
+              }
+            }}
+          >{`< previous`}</div>
+          <div
+            className={styles.next}
+            onClick={() => setStartFrom(startFrom + dataLength - 1)}
+          >
+            {` next >`}{" "}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
