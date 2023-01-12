@@ -23,3 +23,6 @@
   -ms-transition: background-color 0.3s linear;
   transition: all 0.3s linear;
 }
+a {
+  text-decoration: none;
+}

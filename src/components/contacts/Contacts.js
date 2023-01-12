@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Contacts.module.css";
 import ContactCard from "./userCard/ContactCard";
-import ContactRow from "./contactRow";
+import ContactRow from "./ContactRow";
 import { useEffect } from "react";
 import { useState } from "react";
 import fetchContacts from "../../API calls/fetchContacts";

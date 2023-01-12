@@ -4,7 +4,7 @@ import styles from "./Sidebar.module.scss";
 import { FaWhatsappSquare } from "react-icons/fa";
 
 const Sidebar = (props) => {
-  if (props.toShow === "WABA") {
+  if (props.toShow === "Dashboard") {
     return (
       <div
         className={`${styles.sidebar} ${props.sidebarStatus && styles.active}`}
@@ -29,12 +29,32 @@ const Sidebar = (props) => {
           </svg>
         </SidebarOptions>
         <SidebarOptions
-          name="WABA"
+          name="Contacts"
           closeSidebar={props.closeSidebar}
           sidebarStatus={props.sidebarStatus}
           menuToggleHandler={props.menuToggleHandler}
         >
-          <FaWhatsappSquare />
+          <svg
+            className={styles.optionicon}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path>
+          </svg>
+        </SidebarOptions>
+        <SidebarOptions
+          name="Webinars"
+          closeSidebar={props.closeSidebar}
+          sidebarStatus={props.sidebarStatus}
+          menuToggleHandler={props.menuToggleHandler}
+        >
+          <svg
+            className={styles.optionicon}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512"
+          >
+            <path d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64H240l-10.7 32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H346.7L336 416H512c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM512 64V352H64V64H512z"></path>
+          </svg>
         </SidebarOptions>
       </div>
     );
