@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Contacts.module.css";
+import styles from "./Contacts.module.scss";
 import ContactCard from "./userCard/ContactCard";
 import ContactRow from "./ContactRow";
 import { useEffect } from "react";
@@ -8,6 +8,8 @@ import fetchContacts from "../../API calls/fetchContacts";
 import Loader from "../loader/Loader";
 import deleteIndividual from "../../API calls/deleteContact";
 import DeleteContactModal from "./deleteContactModal/deleteContactModal";
+import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
+
 const Contacts = (props) => {
   const [cardStatus, SetCardStatus] = useState(false);
   const [contactsData, updateContactsData] = useState([]);
@@ -101,6 +103,7 @@ const Contacts = (props) => {
           />
         ) : null}
         <ContactCard
+          showDeleteWarningHandler={showDeleteWarningHandler}
           cardStatus={cardStatus}
           CardCloseHandler={CardCloseHandler}
           userData={cardData}
@@ -108,24 +111,29 @@ const Contacts = (props) => {
       </div>
       <div className={styles.contactoptions}>
         <div className={styles.datalength}>
-          <div className={styles.optiontext}>No. of contacts</div>
-          <div
-            className={`${styles.n_rows} ${styles.btn}`}
-            onClick={() => setDataLength(10)}
-          >
-            10
-          </div>
-          <div
-            className={`${styles.n_rows} ${styles.btn}`}
-            onClick={() => setDataLength(50)}
-          >
-            50
-          </div>
-          <div
-            className={`${styles.n_rows} ${styles.btn}`}
-            onClick={() => setDataLength(100)}
-          >
-            100
+          <button className={styles.optiontext}>
+            No. of contacts
+            <TfiAngleRight />
+          </button>
+          <div className={styles.options}>
+            <div
+              className={`${styles.n_rows}  ${styles.btn} ${styles.btn1}`}
+              onClick={() => setDataLength(10)}
+            >
+              10
+            </div>
+            <div
+              className={`${styles.n_rows} ${styles.btn} ${styles.btn2}`}
+              onClick={() => setDataLength(50)}
+            >
+              50
+            </div>
+            <div
+              className={`${styles.n_rows} ${styles.btn} ${styles.btn3}`}
+              onClick={() => setDataLength(100)}
+            >
+              100
+            </div>
           </div>
         </div>
         <div className={styles.driver}>
@@ -138,12 +146,16 @@ const Contacts = (props) => {
                 setStartFrom(0);
               }
             }}
-          >{`< previous`}</div>
+          >
+            <TfiAngleLeft />
+            previous
+          </div>
           <div
             className={`${styles.next} ${styles.btn}`}
             onClick={() => setStartFrom(startFrom + dataLength - 1)}
           >
-            {` next >`}{" "}
+            next
+            <TfiAngleRight />
           </div>
         </div>
       </div>

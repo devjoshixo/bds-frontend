@@ -22,10 +22,6 @@
   background-color: rgba(188, 198, 206, 0.111);
   /* border: 01px solid rgba(128, 128, 128, 0.183); */
 }
-
-.contacts::-webkit-scrollbar-track {
-}
-
 .contacts::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 56, 0.627);
   border-radius: 20px;
@@ -71,7 +67,12 @@ td {
   justify-content: space-between;
 
   align-items: center;
-  font-family: jokerman !important;
+
+  svg {
+    fill: black;
+    height: 1rem;
+    padding: 0 0.3rem;
+  }
 }
 .datalength {
   display: flex;
@@ -85,9 +86,17 @@ td {
   justify-content: center;
   align-items: center;
   height: 1.4rem;
+  font-size: 1rem;
   user-select: none;
   padding: 0.2rem 0.3rem;
+  background-color: aliceblue;
+  z-index: 100;
+  border: none;
 }
+.optiontext:hover + .options {
+  margin-left: -0.5rem;
+}
+
 .n_rows {
   height: 1.4rem;
   width: 2.3rem;
@@ -132,4 +141,14 @@ td {
 .btn {
   border-radius: 2px;
   padding: 0.2rem 0.3rem;
+  transition: all 0.8s;
+}
+.options {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-left: -30rem;
+}
+.options:hover {
+  margin-left: -0.5rem;
 }
