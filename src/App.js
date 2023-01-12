@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./App.module.css";
 import Sidebar from "./components/sidebar/Sidebar";
 import PageBody from "./components/pagebody/PageBody";
@@ -11,6 +11,18 @@ function App() {
   const [sidebarStatus, setSidebarStatus] = useState(false);
 
   const [toShow, setToShow] = useState("Dashboard");
+
+  const hashChangeHandler = (e) => {
+    console.log(e);
+    setToShow(decodeURI(e.target.location.hash.split("#")[1]));
+  };
+
+  useEffect(() => {
+    window.addEventListener("hashchange", hashChangeHandler);
+    return () => {
+      window.removeEventListener("hashchange", hashChangeHandler);
+    };
+  }, []);
 
   const toggleSidebarHandler = () => {
     setSidebarStatus(!sidebarStatus);
