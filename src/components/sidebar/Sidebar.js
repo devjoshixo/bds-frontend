@@ -4,7 +4,7 @@ import styles from "./Sidebar.module.scss";
 import { FaWhatsappSquare } from "react-icons/fa";
 
 const Sidebar = (props) => {
-  if (props.toShow === "Dashboard") {
+  if (props.toShow === "W.A. Team") {
     return (
       <div
         className={`${styles.sidebar} ${props.sidebarStatus && styles.active}`}
@@ -29,21 +29,7 @@ const Sidebar = (props) => {
           </svg>
         </SidebarOptions>
         <SidebarOptions
-          name="Contacts"
-          closeSidebar={props.closeSidebar}
-          sidebarStatus={props.sidebarStatus}
-          menuToggleHandler={props.menuToggleHandler}
-        >
-          <svg
-            className={styles.optionicon}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
-          >
-            <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path>
-          </svg>
-        </SidebarOptions>
-        <SidebarOptions
-          name="Webinars"
+          name="W.A. Team"
           closeSidebar={props.closeSidebar}
           sidebarStatus={props.sidebarStatus}
           menuToggleHandler={props.menuToggleHandler}
