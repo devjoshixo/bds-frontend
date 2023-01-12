@@ -109,19 +109,28 @@ const Contacts = (props) => {
       <div className={styles.contactoptions}>
         <div className={styles.datalength}>
           <div className={styles.optiontext}>No. of contacts</div>
-          <div className={styles.n_rows} onClick={() => setDataLength(10)}>
+          <div
+            className={`${styles.n_rows} ${styles.btn}`}
+            onClick={() => setDataLength(10)}
+          >
             10
           </div>
-          <div className={styles.n_rows} onClick={() => setDataLength(50)}>
+          <div
+            className={`${styles.n_rows} ${styles.btn}`}
+            onClick={() => setDataLength(50)}
+          >
             50
           </div>
-          <div className={styles.n_rows} onClick={() => setDataLength(100)}>
+          <div
+            className={`${styles.n_rows} ${styles.btn}`}
+            onClick={() => setDataLength(100)}
+          >
             100
           </div>
         </div>
         <div className={styles.driver}>
           <div
-            className={styles.previous}
+            className={`${styles.previous} ${styles.btn}`}
             onClick={() => {
               if (startFrom >= dataLength) {
                 setStartFrom(startFrom - dataLength);
@@ -131,7 +140,7 @@ const Contacts = (props) => {
             }}
           >{`< previous`}</div>
           <div
-            className={styles.next}
+            className={`${styles.next} ${styles.btn}`}
             onClick={() => setStartFrom(startFrom + dataLength - 1)}
           >
             {` next >`}{" "}
