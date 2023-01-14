@@ -40,15 +40,14 @@ const Contacts = () => {
     await deleteContacts(id);
     setShowDeleteWarning(false);
     setUpdateContacts(cid);
+    setSelectedContacts([]);
   };
 
   const handleSelectAll = () => {
-    if (selectedContacts.length === dataLength) {
+    if (selectedContacts.length == dataLength) {
       setSelectedContacts([]);
-      setAllSelected(false);
     } else {
       setSelectedContacts(contactsData.map((contact) => contact["_id"]));
-      setAllSelected(true);
     }
   };
 
@@ -61,12 +60,17 @@ const Contacts = () => {
   }, [updateContacts, dataLength, startFrom]);
 
   useEffect(() => {
-    if (selectedContacts.length === dataLength) {
+    if (selectedContacts.length == dataLength) {
       setAllSelected(true);
     } else {
       setAllSelected(false);
     }
   }, [selectedContacts]);
+
+  useEffect(() => {
+    setSelectedContacts([]);
+    setAllSelected(false);
+  }, [dataLength]);
 
   const addNewRow = () => {
     var list = [];
