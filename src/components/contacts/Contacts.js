@@ -22,6 +22,7 @@ const Contacts = () => {
   const [startFrom, setStartFrom] = useState(0);
   const [selectedContacts, setSelectedContacts] = useState([]);
   const [allSelected, setAllSelected] = useState(false);
+  const [bulkaction, setBulkaction] = useState("");
 
   const CardOpenHandler = (userData) => {
     SetCardStatus(true);
@@ -165,6 +166,7 @@ const Contacts = () => {
         {selectedContacts.length > 0 ? (
           <div className={styles.bulkactions}>
             <select
+              value={bulkaction}
               className={styles.bulkactions_content}
               onChange={(e) => {
                 handleBulkActions(e);
