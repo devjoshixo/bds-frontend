@@ -22,7 +22,6 @@ const Contacts = () => {
   const [startFrom, setStartFrom] = useState(0);
   const [selectedContacts, setSelectedContacts] = useState([]);
   const [allSelected, setAllSelected] = useState(false);
-  const [bulkaction, setBulkaction] = useState("");
 
   const CardOpenHandler = (userData) => {
     SetCardStatus(true);
@@ -42,11 +41,6 @@ const Contacts = () => {
     setShowDeleteWarning(false);
     setUpdateContacts(cid);
     setSelectedContacts([]);
-  };
-  const handleBulkActions = (e) => {
-    if (e.target.value == "delete") {
-      showDeleteWarningHandler(selectedContacts);
-    }
   };
 
   const handleSelectAll = () => {
@@ -163,21 +157,22 @@ const Contacts = () => {
             </label>
           </div>
         </div>
-        {selectedContacts.length > 0 ? (
+        {selectedContacts.length > 0 && (
           <div className={styles.bulkactions}>
-            <select
-              value={bulkaction}
-              className={styles.bulkactions_content}
-              onChange={(e) => {
-                handleBulkActions(e);
-              }}
-            >
-              <option value="">Bulk Actions</option>
-              <option value="delete">Delete</option>
-              <option value="edit">Edit</option>
-            </select>
+            <button className={styles.bulkactions_heading}>Bulk Actions</button>
+            <div className={styles.bulkactions_options}>
+              <a
+                className={styles.bulkactions_option}
+                onClick={() => {
+                  showDeleteWarningHandler(selectedContacts);
+                }}
+              >
+                Delete
+              </a>
+              <a className={styles.bulkactions_option}>Edit</a>
+            </div>
           </div>
-        ) : null}
+        )}
         <div className={styles.driver}>
           <div
             className={`${styles.previous} ${styles.btn}`}
