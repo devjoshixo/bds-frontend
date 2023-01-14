@@ -1,6 +1,6 @@
 .backdrop {
   backdrop-filter: blur(2.5px);
-  /* background-color: rgba(0, 0, 0, 0.076); */
+  background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
   left: 0;
