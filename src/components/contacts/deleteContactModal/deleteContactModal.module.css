@@ -48,6 +48,8 @@
   color: aliceblue;
   background-color: rgba(10, 43, 61, 1);
   transition: all 0.2s;
+  cursor: pointer;
+  user-select: none;
 }
 .modalbutton:hover {
   background-color: rgb(224, 232, 239);
