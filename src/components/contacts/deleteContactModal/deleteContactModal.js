@@ -23,7 +23,7 @@ const DeleteContactModal = (props) => {
               }
             }}
           >
-            Yes
+            Delete
           </div>
         </div>
       </div>
