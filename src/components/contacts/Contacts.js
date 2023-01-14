@@ -100,6 +100,8 @@ const Contacts = (props) => {
             }}
             cid={delCid}
             delete={deleteRowHandler}
+            userData={cardData}
+            setCardStatus={SetCardStatus}
           />
         ) : null}
         <ContactCard
