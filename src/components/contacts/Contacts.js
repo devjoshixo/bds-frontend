@@ -185,7 +185,9 @@ const Contacts = () => {
           </div>
           <div
             className={`${styles.next} ${styles.btn}`}
-            onClick={() => setStartFrom(startFrom + dataLength - 1)}
+            onClick={() =>
+              setStartFrom(parseInt(startFrom) + parseInt(dataLength))
+            }
           >
             next
             <TfiAngleRight />
