@@ -111,9 +111,23 @@ const Contacts = (props) => {
           userData={cardData}
         ></ContactCard>
       </div>
+
       <div className={styles.contactoptions}>
         <div className={styles.datalength}>
-          <button className={styles.optiontext}>
+          <div>
+            <label className={styles.optiontext}>
+              No. of contacts
+              <select
+                value={dataLength}
+                onChange={(e) => setDataLength(e.target.value)}
+              >
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </label>
+          </div>
+          {/* {<button className={styles.optiontext}>
             No. of contacts
             <TfiAngleRight />
           </button>
@@ -136,7 +150,7 @@ const Contacts = (props) => {
             >
               100
             </div>
-          </div>
+          </div>} */}
         </div>
         <div className={styles.driver}>
           <div
