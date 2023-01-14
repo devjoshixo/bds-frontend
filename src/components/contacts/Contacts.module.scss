@@ -156,14 +156,12 @@ td {
   &:hover {
     background-color: rgba(60, 59, 59, 0.09);
   }
-  // transition: all 0.8s;
 }
-// .options {
-//   display: flex;
-//   flex-direction: row;
-//   gap: 0.5rem;
-//   margin-left: -30rem;
-// }
-// .options:hover {
-//   margin-left: -0.5rem;
-// }
+.multideletebutton {
+  height: 1rem;
+  width: 10rem;
+
+  svg {
+    height: 75%;
+  }
+}

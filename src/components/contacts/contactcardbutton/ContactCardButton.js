@@ -1,10 +1,6 @@
 import styles from "./ContactCardButton.module.css";
-import DeleteContactModal from "../deleteContactModal/deleteContactModal";
-import { useState } from "react";
 
 const ContactCardButton = (props) => {
-  // const [showDeleteWarning, setShowDeleteWarning] = useState(false);
-
   return (
     <div className={styles.buttondiv}>
       <div

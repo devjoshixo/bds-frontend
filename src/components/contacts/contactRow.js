@@ -1,10 +1,24 @@
 import ContactCardButton from "./contactcardbutton/ContactCardButton";
 
 const ContactRow = (props) => {
+  const handleChange = () => {
+    if (props.selectedContacts.includes(props.cid)) {
+      props.setSelectedContacts(
+        props.selectedContacts.filter((item) => item !== props.cid)
+      );
+    } else {
+      props.setSelectedContacts([...props.selectedContacts, props.cid]);
+    }
+  };
+
   return (
     <tr id={`${props.cid}`}>
       <td>
-        <input type="checkbox"></input>
+        <input
+          type="checkbox"
+          checked={props.selectedContacts.includes(props.cid)}
+          onChange={handleChange}
+        />
       </td>
       <td>
         <ContactCardButton
@@ -16,9 +30,6 @@ const ContactRow = (props) => {
           cid={props.cid}
           fetchData={props.fetchData}
           showDeleteWarningHandler={props.showDeleteWarningHandler}
-          // showDeleteWarningHandler={props.showDeleteWarningHandler}
-          // showDeleteWarning={props.showDeleteWarning}
-          // setShowDeleteWarning={props.setShowDeleteWarning}
         />
       </td>
 
