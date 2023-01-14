@@ -34,7 +34,7 @@ const Contacts = (props) => {
     setShowDeleteWarning(true);
   };
   const deleteRowHandler = async (cid) => {
-    await deleteIndividual(cid);
+    await deleteIndividual([cid]);
     setShowDeleteWarning(false);
     setUpdateContacts(cid);
   };
