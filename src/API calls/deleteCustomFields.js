@@ -1,8 +1,8 @@
-const deleteContact = async (id) => {
+const deleteContact = async (data) => {
   var option = {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(id),
+    body: JSON.stringify(data),
   };
   const promise = await fetch(
     `http://localhost:5000/contacts/customfield/delete`,

@@ -5,11 +5,14 @@ const CustomFieldRow = (props) => {
     <tr>
       <td>{props.type}</td>
       <td>{props.title}</td>
-      <td>{props.fieldid}</td>
-      <td>{props.createdon}</td>
+      <td>{props.createdOn}</td>
       <td>{props.description}</td>
       <td>
-        <CustomFieldButton />
+        <CustomFieldButton
+          id={props.id}
+          title={props.title}
+          delete={props.delete}
+        />
       </td>
     </tr>
   );
