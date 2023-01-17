@@ -4,6 +4,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import PageBody from "./components/pagebody/PageBody";
 import Contacts from "./components/contacts/Contacts";
 import Dashboard from "./components/dashboard/Dashboard";
+import CustomFields from "./components/Custom fields/CustomFields";
 
 function App() {
   // const sidebarStatus
@@ -55,6 +56,8 @@ function App() {
       return <Contacts />;
     } else if (toShow === "Dashboard") {
       return <Dashboard setToShow={setToShow} />;
+    } else if (toShow === "Custom Fields") {
+      return <CustomFields />;
     }
   };
 
