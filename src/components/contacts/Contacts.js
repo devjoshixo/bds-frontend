@@ -22,7 +22,11 @@ const Contacts = () => {
   const [startFrom, setStartFrom] = useState(0);
   const [selectedContacts, setSelectedContacts] = useState([]);
   const [allSelected, setAllSelected] = useState(false);
+  const [bulkOptionsStatus, setBulkOptionStatus] = useState(false);
 
+  const bulkOptiontoggle = () => {
+    setBulkOptionStatus(!bulkOptionsStatus);
+  };
   const CardOpenHandler = (userData) => {
     SetCardStatus(true);
     setCardData(userData);
@@ -34,6 +38,7 @@ const Contacts = () => {
   const showDeleteWarningHandler = (cid) => {
     setDelCid(cid);
     setShowDeleteWarning(true);
+    setBulkOptionStatus(false);
   };
   const deleteRowHandler = async (cid) => {
     var id = typeof cid === "string" ? [cid] : cid;
@@ -151,7 +156,7 @@ const Contacts = () => {
                 onChange={(e) => setDataLength(e.target.value)}
               >
                 <option value="10">10</option>
-                <option value="50">50</option>
+                Delete <option value="50">50</option>
                 <option value="100">100</option>
               </select>
             </label>
@@ -159,17 +164,26 @@ const Contacts = () => {
         </div>
         {selectedContacts.length > 0 && (
           <div className={styles.bulkactions}>
-            <button className={styles.bulkactions_heading}>Bulk Actions</button>
-            <div className={styles.bulkactions_options}>
-              <a
+            <button
+              className={styles.bulkactions_heading}
+              onClick={bulkOptiontoggle}
+            >
+              Bulk Actions
+            </button>
+            <div
+              className={`${styles.bulkactions_options} ${
+                bulkOptionsStatus && styles.showbulkactions_options
+              }`}
+            >
+              <div
                 className={styles.bulkactions_option}
                 onClick={() => {
                   showDeleteWarningHandler(selectedContacts);
                 }}
               >
                 Delete
-              </a>
-              <a className={styles.bulkactions_option}>Edit</a>
+              </div>
+              <div className={styles.bulkactions_option}>Edit</div>
             </div>
           </div>
         )}
