@@ -1,4 +1,4 @@
-const deleteIndividual = async (id) => {
+const deleteContact = async (id) => {
   var option = {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
@@ -7,4 +7,4 @@ const deleteIndividual = async (id) => {
   const promise = await fetch(`http://localhost:5000/contacts/delete`, option);
   return promise;
 };
-export default deleteIndividual;
+export default deleteContact;
