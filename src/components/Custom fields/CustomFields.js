@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import fetchCustomFields from "../../API calls/fetchCustomFields";
 import deleteCustomField from "../../API calls/deleteCustomFields";
 import DeleteCustomFieldModal from "./deleteCustomFieldModal/deleteCustomFieldModal";
+import updateContact from "../../API calls/updateContacts";
 
 const CustomFields = (props) => {
   const [customFieldsData, updateCustomFieldsData] = useState([]);
@@ -19,6 +20,7 @@ const CustomFields = (props) => {
     await deleteCustomField(arg);
     setShowDeleteWarning(false);
     setUpdateField(arg);
+    await updateContact(arg);
   };
 
   useEffect(() => {
@@ -31,26 +33,28 @@ const CustomFields = (props) => {
   return (
     <div className={styles.customfieldcontainer}>
       <table className={styles.customfieldstable}>
-        <tr className={styles.tablehead}>
-          <th className={styles.tablehead}>TYPE</th>
-          <th className={styles.tablehead}>TITLE</th>
-          <th className={styles.tablehead}>CREATED ON</th>
-          <th className={styles.tablehead}>DESCTIPTION</th>
-          <th className={styles.tablehead}>ACTIONS</th>
-        </tr>
-        {customFieldsData.map((customField) => {
-          return (
-            <CustomFieldRow
-              key={customField._id}
-              id={customField._id}
-              type={customField.type}
-              title={customField.title}
-              createdOn={customField.createdOn}
-              description={customField.description}
-              delete={showDeleteWarningHandler}
-            />
-          );
-        })}
+        <tbody>
+          <tr className={styles.tablehead}>
+            <th className={styles.tablehead}>TYPE</th>
+            <th className={styles.tablehead}>TITLE</th>
+            <th className={styles.tablehead}>CREATED ON</th>
+            <th className={styles.tablehead}>DESCTIPTION</th>
+            <th className={styles.tablehead}>ACTIONS</th>
+          </tr>
+          {customFieldsData.map((customField) => {
+            return (
+              <CustomFieldRow
+                key={customField._id}
+                id={customField._id}
+                type={customField.type}
+                title={customField.title}
+                createdOn={customField.createdOn}
+                description={customField.description}
+                delete={showDeleteWarningHandler}
+              />
+            );
+          })}
+        </tbody>
       </table>
       {showDeleteWarning ? (
         <DeleteCustomFieldModal
