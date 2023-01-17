@@ -3,7 +3,7 @@ import styles from "./Contacts.module.scss";
 import ContactCard from "./userCard/ContactCard";
 import ContactRow from "./ContactRow";
 import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import fetchContacts from "../../API calls/fetchContacts";
 import Loader from "../loader/Loader";
 import deleteContacts from "../../API calls/deleteContact";
@@ -23,6 +23,7 @@ const Contacts = () => {
   const [selectedContacts, setSelectedContacts] = useState([]);
   const [allSelected, setAllSelected] = useState(false);
   const [bulkOptionsStatus, setBulkOptionStatus] = useState(false);
+  const bulkOptions = useRef(null);
 
   const bulkOptiontoggle = () => {
     setBulkOptionStatus(!bulkOptionsStatus);
@@ -56,6 +57,12 @@ const Contacts = () => {
     }
   };
 
+  const closeBulkActionMenu = (e) => {
+    if (bulkOptionsStatus && !bulkOptions.current.contains(e.target)) {
+      setBulkOptionStatus(false);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       updateContactsData(await fetchContacts(startFrom, dataLength));
@@ -76,6 +83,13 @@ const Contacts = () => {
     setSelectedContacts([]);
     setAllSelected(false);
   }, [dataLength]);
+
+  useEffect(() => {
+    document.addEventListener("click", closeBulkActionMenu, true);
+    return () => {
+      document.removeEventListener("click", closeBulkActionMenu, true);
+    };
+  }, [bulkOptionsStatus]);
 
   const addNewRow = () => {
     var list = [];
@@ -171,6 +185,7 @@ const Contacts = () => {
               Bulk Actions
             </button>
             <div
+              ref={bulkOptions}
               className={`${styles.bulkactions_options} ${
                 bulkOptionsStatus && styles.showbulkactions_options
               }`}
