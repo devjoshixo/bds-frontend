@@ -43,6 +43,14 @@ const Sidebar = (props) => {
           </svg>
         </SidebarOptions>
         <SidebarOptions
+          name="Custom Fields"
+          closeSidebar={props.closeSidebar}
+          sidebarStatus={props.sidebarStatus}
+          menuToggleHandler={props.menuToggleHandler}
+        >
+          <MdLabelImportant />
+        </SidebarOptions>
+        <SidebarOptions
           name="Webinars"
           closeSidebar={props.closeSidebar}
           sidebarStatus={props.sidebarStatus}
