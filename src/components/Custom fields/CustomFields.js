@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import fetchCustomFields from "../../API calls/fetchCustomFields";
 import deleteCustomField from "../../API calls/deleteCustomFields";
 import DeleteCustomFieldModal from "./deleteCustomFieldModal/deleteCustomFieldModal";
-import updateContact from "../../API calls/updateContacts";
 
 const CustomFields = (props) => {
   const [customFieldsData, updateCustomFieldsData] = useState([]);
@@ -20,7 +19,6 @@ const CustomFields = (props) => {
     await deleteCustomField(arg);
     setShowDeleteWarning(false);
     setUpdateField(arg);
-    await updateContact(arg);
   };
 
   useEffect(() => {
