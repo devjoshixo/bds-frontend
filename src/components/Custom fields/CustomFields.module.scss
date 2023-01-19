@@ -54,4 +54,16 @@
 }
 .customfieldstable {
   margin-top: 0rem;
+  overflow: scroll;
+}
+.customfieldcontainer::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 20px;
+  background-color: rgba(188, 198, 206, 0);
+  /* border: 01px solid rgba(128, 128, 128, 0.183); */
+}
+.customfieldcontainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 56, 0.627);
+  border-radius: 20px;
 }
