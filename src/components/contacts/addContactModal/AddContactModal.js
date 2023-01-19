@@ -28,7 +28,7 @@ const AddContactModal = (props) => {
     }
   };
 
-  const addContactHandler = () => {
+  const addContactHandler = async () => {
     const contact = {
       name: name,
       email: email,
@@ -36,7 +36,9 @@ const AddContactModal = (props) => {
       mobile: mobile,
     };
 
-    addContact(contact);
+    await addContact(contact);
+    props.closeCard();
+    props.updateContacts(contact.email);
   };
   return (
     <div className={styles.backdrop}>

@@ -45,7 +45,7 @@ const Contacts = () => {
     setBulkOptionStatus(false);
   };
   const deleteRowHandler = async (cid) => {
-    var id = typeof cid === "string" ? [cid] : cid;
+    var id = typeof cid == "string" ? [cid] : cid;
     await deleteContacts(id);
     setShowDeleteWarning(false);
     setUpdateContacts(cid);
@@ -53,7 +53,7 @@ const Contacts = () => {
   };
 
   const handleSelectAll = () => {
-    if (selectedContacts.length == dataLength) {
+    if (selectedContacts.length == contactsData.length) {
       setSelectedContacts([]);
     } else {
       setSelectedContacts(contactsData.map((contact) => contact["_id"]));
@@ -75,7 +75,7 @@ const Contacts = () => {
   }, [updateContacts, dataLength, startFrom]);
 
   useEffect(() => {
-    if (selectedContacts.length == dataLength) {
+    if (selectedContacts.length == contactsData.length) {
       setAllSelected(true);
     } else {
       setAllSelected(false);
@@ -134,6 +134,7 @@ const Contacts = () => {
           closeCard={() => {
             setAddContactModalStatus(false);
           }}
+          updateContacts={setUpdateContacts}
         />
       )}
       <div className={styles.contacts}>
