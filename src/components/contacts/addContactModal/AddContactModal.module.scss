@@ -1,0 +1,36 @@
+.backdrop {
+  backdrop-filter: blur(2.5px);
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20000;
+  width: 100vw;
+  height: 100vh;
+}
+
+.addmodal {
+  background-color: rgb(216, 222, 228);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60%;
+  width: 30%;
+
+  border-radius: 0.1rem;
+}
+
+.header {
+  text-align: left;
+}
+
+.addcontactform {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer {
+  display: flex;
+}
