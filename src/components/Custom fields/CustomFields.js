@@ -5,6 +5,7 @@ import fetchCustomFields from "../../API calls/fetchCustomFields";
 import deleteCustomField from "../../API calls/deleteCustomFields";
 import DeleteCustomFieldModal from "./deleteCustomFieldModal/deleteCustomFieldModal";
 import updateContact from "../../API calls/updateContacts";
+import { IoAdd } from "react-icons/io5";
 
 const CustomFields = (props) => {
   const [customFieldsData, updateCustomFieldsData] = useState([]);
@@ -56,6 +57,12 @@ const CustomFields = (props) => {
           })}
         </tbody>
       </table>
+
+      <div className={styles.addnewrowbutton}>
+        <IoAdd />
+        Add Custom Field
+      </div>
+
       {showDeleteWarning ? (
         <DeleteCustomFieldModal
           cancel={() => {

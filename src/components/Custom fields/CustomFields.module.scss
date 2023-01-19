@@ -6,7 +6,7 @@
 }
 
 .customfieldcontainer {
-  padding: 1rem;
+  padding: 5rem 1rem 1rem 1rem;
   box-sizing: border-box;
 }
 
@@ -20,4 +20,22 @@
   padding-left: 0.4rem;
   border-bottom: 0.1px solid rgb(130, 145, 158);
   font-family: "Poppins", sans-serif;
+}
+.addnewrowbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 11rem;
+  height: 2.5rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  position: absolute;
+  top: 6.8rem;
+  left: 6rem;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: rgb(39, 72, 101);
+  color: aliceblue;
+  font-size: 0.9rem;
 }
