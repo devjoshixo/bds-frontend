@@ -26,6 +26,7 @@ const Contacts = () => {
   const [allSelected, setAllSelected] = useState(false);
   const [bulkOptionsStatus, setBulkOptionStatus] = useState(false);
   const bulkOptions = useRef(null);
+  const [addContactModalStatus, setAddContactModalStatus] = useState(false);
 
   const bulkOptiontoggle = () => {
     setBulkOptionStatus(!bulkOptionsStatus);
@@ -118,12 +119,23 @@ const Contacts = () => {
   return (
     <div className={styles.contactWapper}>
       <div className={styles.buttonssection}>
-        <div className={styles.addnewrowbutton}>
+        <div
+          className={styles.addnewrowbutton}
+          onClick={() => {
+            setAddContactModalStatus(true);
+          }}
+        >
           <IoAdd />
           Add Contacts
         </div>
       </div>
-      <AddContactModal />
+      {addContactModalStatus && (
+        <AddContactModal
+          closeCard={() => {
+            setAddContactModalStatus(false);
+          }}
+        />
+      )}
       <div className={styles.contacts}>
         {loadingStatus ? (
           <Loader />

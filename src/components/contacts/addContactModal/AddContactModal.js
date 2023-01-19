@@ -65,7 +65,7 @@ const AddContactModal = (props) => {
           </label>
         </div>
         <div className={styles.footer}>
-          <div>Close</div>
+          <div onClick={props.closeCard}>Close</div>
           <div onClick={addContactHandler}>Add Contact</div>
         </div>
       </div>
