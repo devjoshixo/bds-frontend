@@ -9,6 +9,7 @@ import Loader from "../loader/Loader";
 import deleteContacts from "../../API calls/deleteContact";
 import DeleteContactModal from "./deleteContactModal/deleteContactModal";
 import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
+import { IoAdd } from "react-icons/io5";
 
 const Contacts = () => {
   const [cardStatus, SetCardStatus] = useState(false);
@@ -115,6 +116,12 @@ const Contacts = () => {
 
   return (
     <div className={styles.contactWapper}>
+      <div className={styles.buttonssection}>
+        <div className={styles.addnewrowbutton}>
+          <IoAdd />
+          Add Contacts
+        </div>
+      </div>
       <div className={styles.contacts}>
         {loadingStatus ? (
           <Loader />
