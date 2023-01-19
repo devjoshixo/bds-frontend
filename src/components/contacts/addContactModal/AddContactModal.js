@@ -44,37 +44,64 @@ const AddContactModal = (props) => {
   return (
     <div className={styles.backdrop}>
       <div className={styles.addmodal}>
-        <div className={styles.header}>ADD CONTACT</div>
-        <div className={styles.addcontactform}>
-          <label className={styles.inputfield}>
-            Name
-            <input name="name" value={name} onChange={handleInputChange} />
-          </label>
-          <label className={styles.inputfield}>
-            Email ID
-            <input name="email" value={email} onChange={handleInputChange} />
-          </label>
-          <label className={styles.inputfield}>
-            WhatsApp Number
-            <input
-              name="whatsappMobile"
-              value={whatsappMobile}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label className={styles.inputfield}>
-            Phone Number
-            <input name="mobile" value={mobile} onChange={handleInputChange} />
-          </label>
-        </div>
-        <div className={styles.footer}>
-          <div className={styles.closecard} onClick={props.closeCard}>
-            <CgClose size={25} />
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            addContactHandler();
+          }}
+        >
+          <div className={styles.header}>ADD CONTACT</div>
+          <div className={styles.addcontactform}>
+            <label className={styles.inputfield}>
+              Name
+              <input
+                name="name"
+                value={name}
+                type="text"
+                onChange={handleInputChange}
+                required
+              />
+            </label>
+            <label className={styles.inputfield}>
+              Email ID
+              <input
+                name="email"
+                value={email}
+                type="email"
+                onChange={handleInputChange}
+                required
+              />
+            </label>
+            <label className={styles.inputfield}>
+              Phone Number
+              <input
+                name="mobile"
+                value={mobile}
+                type="tel"
+                pattern="[0-9]{10}"
+                onChange={handleInputChange}
+                required
+              />
+            </label>
+            <label className={styles.inputfield}>
+              WhatsApp Number
+              <input
+                name="whatsappMobile"
+                value={whatsappMobile}
+                type="tel"
+                onChange={handleInputChange}
+              />
+            </label>
           </div>
-          <div className={styles.submitcard} onClick={addContactHandler}>
-            Add
+          <div className={styles.footer}>
+            <div className={styles.closecard} onClick={props.closeCard}>
+              <CgClose size={25} />
+            </div>
+            <button className={styles.submitcard} type="submit">
+              Add
+            </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
