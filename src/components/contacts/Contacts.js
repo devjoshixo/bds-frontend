@@ -10,6 +10,7 @@ import deleteContacts from "../../API calls/deleteContact";
 import DeleteContactModal from "./deleteContactModal/deleteContactModal";
 import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import { IoAdd } from "react-icons/io5";
+import AddContactModal from "./addContactModal/AddContactModal";
 
 const Contacts = () => {
   const [cardStatus, SetCardStatus] = useState(false);
@@ -122,6 +123,7 @@ const Contacts = () => {
           Add Contacts
         </div>
       </div>
+      <AddContactModal />
       <div className={styles.contacts}>
         {loadingStatus ? (
           <Loader />
