@@ -31,6 +31,12 @@ const CustomFields = (props) => {
   }, [updateField]);
   return (
     <div className={styles.customfieldcontainer}>
+      <div className={styles.buttonssection}>
+        <div className={styles.addnewrowbutton}>
+          <IoAdd />
+          Add Custom Field
+        </div>
+      </div>
       <table className={styles.customfieldstable}>
         <tbody>
           <tr className={styles.tablehead}>
@@ -55,11 +61,6 @@ const CustomFields = (props) => {
           })}
         </tbody>
       </table>
-
-      <div className={styles.addnewrowbutton}>
-        <IoAdd />
-        Add Custom Field
-      </div>
 
       {showDeleteWarning ? (
         <DeleteCustomFieldModal
