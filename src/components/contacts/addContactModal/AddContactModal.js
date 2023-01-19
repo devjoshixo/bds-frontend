@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./AddContactModal.module.scss";
 import addContact from "../../../API calls/addContact";
+import { CgClose } from "react-icons/cg";
 
 const AddContactModal = (props) => {
   const [name, setName] = React.useState("");
@@ -43,17 +44,17 @@ const AddContactModal = (props) => {
   return (
     <div className={styles.backdrop}>
       <div className={styles.addmodal}>
-        <div className={styles.header}>Add Contact</div>
+        <div className={styles.header}>ADD CONTACT</div>
         <div className={styles.addcontactform}>
-          <label>
+          <label className={styles.inputfield}>
             Name
             <input name="name" value={name} onChange={handleInputChange} />
           </label>
-          <label>
+          <label className={styles.inputfield}>
             Email ID
             <input name="email" value={email} onChange={handleInputChange} />
           </label>
-          <label>
+          <label className={styles.inputfield}>
             WhatsApp Number
             <input
               name="whatsappMobile"
@@ -61,14 +62,18 @@ const AddContactModal = (props) => {
               onChange={handleInputChange}
             />
           </label>
-          <label>
+          <label className={styles.inputfield}>
             Phone Number
             <input name="mobile" value={mobile} onChange={handleInputChange} />
           </label>
         </div>
         <div className={styles.footer}>
-          <div onClick={props.closeCard}>Close</div>
-          <div onClick={addContactHandler}>Add Contact</div>
+          <div className={styles.closecard} onClick={props.closeCard}>
+            <CgClose size={25} />
+          </div>
+          <div className={styles.submitcard} onClick={addContactHandler}>
+            Add
+          </div>
         </div>
       </div>
     </div>
