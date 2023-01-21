@@ -7,6 +7,8 @@ const AddCustomFieldModal = (props) => {
   const [customFieldName, setCustomFieldName] = useState("");
   const [customFieldType, setCustomFieldType] = useState("");
   const [customFieldDes, setCustomFieldDes] = useState("");
+  const [customOptions, setCustomOptions] = useState([]);
+  const [optionsArray, setOptionsArray] = useState([]);
 
   const addCustomFieldHandler = async () => {
     const customField = {
@@ -39,6 +41,16 @@ const AddCustomFieldModal = (props) => {
         break;
     }
   };
+  // const customOptions = [];
+
+  const addNewOption = () => {
+    setCustomOptions([
+      ...customOptions,
+      <div className={styles.optionfielddiv}>
+        <input className={styles.optionfield}></input>
+      </div>,
+    ]);
+  };
 
   return (
     <div className={styles.backdrop}>
@@ -46,6 +58,7 @@ const AddCustomFieldModal = (props) => {
         <div className={styles.header}>ADD CUSTOM FIELD</div>
         <div className={styles.addfieldform}>
           <form
+            className={styles.addCustomFieldForm}
             id="addCustomFieldForm"
             onSubmit={(e) => {
               e.preventDefault();
@@ -92,7 +105,12 @@ const AddCustomFieldModal = (props) => {
             </label>
             {(customFieldType == "Select" ||
               customFieldType == "MultiSelect") && (
-              <div>{/*stuff goes here*/}</div>
+              <div className={styles.addnewoptioncontainer}>
+                {customOptions}
+                <div className={styles.addnewbutton} onClick={addNewOption}>
+                  +
+                </div>
+              </div>
             )}
           </form>
         </div>
