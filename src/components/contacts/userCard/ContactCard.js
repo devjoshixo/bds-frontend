@@ -1,6 +1,9 @@
 import styles from "./ContactCard.module.scss";
+import { useEffect, useState } from "react";
 
 const ContactCard = (props) => {
+  const [customFieldsData, setCustomFieldsData] = useState({});
+
   const fetchfieldtype = async (name) => {
     const response = await fetch(
       "http://localhost:5000/contacts/customfield/type?title=" + name
@@ -41,13 +44,31 @@ const ContactCard = (props) => {
           <br />
           <input
             type={fetchfieldtype(i)}
-            value={props.userData.CustomFields[`${i}`]}
+            value={customFieldsData[`${i}`]}
+            name={i}
+            onChange={handleChange}
           />
         </>
       );
     }
     return list;
   };
+
+  const handleChange = (e) => {
+    var obj = { ...customFieldsData };
+    obj[`${e.target.name}`] = e.target.value;
+    setCustomFieldsData({ ...obj });
+  };
+
+  useEffect(() => {
+    var obj = {};
+    let keys = Object.keys(props.userData.CustomFields);
+    for (let i of keys) {
+      obj[`${i}`] = props.userData.CustomFields[`${i}`];
+    }
+    setCustomFieldsData(obj);
+  }, []);
+
   return (
     <div className={`${styles.backdrop} ${props.cardStatus && styles.active}`}>
       <div

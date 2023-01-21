@@ -121,7 +121,11 @@ const Contacts = () => {
   const addFieldName = () => {
     var fieldNames = [];
     for (let i of availableFields) {
-      fieldNames.push(<th className={styles.customfield}>{i.title}</th>);
+      fieldNames.push(
+        <th className={styles.customfield} key={i.title}>
+          {i.title}
+        </th>
+      );
     }
     return fieldNames;
   };

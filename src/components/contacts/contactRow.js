@@ -15,7 +15,7 @@ const ContactRow = (props) => {
     var list = [];
     for (let i of props.availableFields) {
       list.push(
-        <td className={styles.customfielddata}>
+        <td key={i.title} className={styles.customfielddata}>
           {props.contact.CustomFields[`${i["title"]}`]}
         </td>
       );
