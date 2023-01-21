@@ -185,12 +185,14 @@ const Contacts = () => {
             setCardStatus={SetCardStatus}
           />
         ) : null}
-        <ContactCard
-          showDeleteWarningHandler={showDeleteWarningHandler}
-          cardStatus={cardStatus}
-          CardCloseHandler={CardCloseHandler}
-          userData={cardData}
-        ></ContactCard>
+        {cardStatus && (
+          <ContactCard
+            showDeleteWarningHandler={showDeleteWarningHandler}
+            cardStatus={cardStatus}
+            CardCloseHandler={CardCloseHandler}
+            userData={cardData}
+          />
+        )}
       </div>
       <div className={styles.contactoptions}>
         <div className={styles.datalength}>

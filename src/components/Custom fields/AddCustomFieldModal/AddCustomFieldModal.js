@@ -86,8 +86,14 @@ const AddCustomFieldModal = (props) => {
                 <option value="Text">Text</option>
                 <option value="Number">Number</option>
                 <option value="Date">Date</option>
+                <option value="Select">Select</option>
+                <option value="MultiSelect">MultiSelect</option>
               </select>
             </label>
+            {(customFieldType == "Select" ||
+              customFieldType == "MultiSelect") && (
+              <div>{/*stuff goes here*/}</div>
+            )}
           </form>
         </div>
         <div className={styles.footer}>

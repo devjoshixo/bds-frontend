@@ -1,6 +1,53 @@
 import styles from "./ContactCard.module.scss";
 
 const ContactCard = (props) => {
+  const fetchfieldtype = async (name) => {
+    const response = await fetch(
+      "http://localhost:5000/contacts/customfield/type?title=" + name
+    ).then((res) => res.text());
+
+    switch (response) {
+      case "Text":
+        return "text";
+      case "Number":
+        return "number";
+      case "Date":
+        return "date";
+      default:
+        break;
+    }
+  };
+
+  const addCustomFieldsTitle = () => {
+    var list = [];
+    let keys = Object.keys(props.userData.CustomFields);
+    for (let i of keys) {
+      list.push(
+        <>
+          <br />
+          {i}
+        </>
+      );
+    }
+    return list;
+  };
+
+  const addCustomFieldsData = () => {
+    var list = [];
+    let keys = Object.keys(props.userData.CustomFields);
+    for (let i of keys) {
+      list.push(
+        <>
+          <br />
+          <input
+            type={fetchfieldtype(i)}
+            value={props.userData.CustomFields[`${i}`]}
+          />
+        </>
+      );
+    }
+    return list;
+  };
   return (
     <div className={`${styles.backdrop} ${props.cardStatus && styles.active}`}>
       <div
@@ -32,6 +79,7 @@ const ContactCard = (props) => {
               E-mail
               <br />
               Whatsapp
+              {props.userData.CustomFields && addCustomFieldsTitle()}
             </div>
             <div
               className={`${styles.detailvalues} ${styles.detailsubcontainer}`}
@@ -43,6 +91,7 @@ const ContactCard = (props) => {
               {props.userData.email}
               <br />
               {props.userData.whatsappMobile}
+              {props.userData.CustomFields && addCustomFieldsData()}
             </div>
           </div>
         </div>
