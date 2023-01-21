@@ -15,7 +15,7 @@ import AddContactModal from "./addContactModal/AddContactModal";
 
 const Contacts = () => {
   const [cardStatus, SetCardStatus] = useState(false);
-  const [contactsData, updateContactsData] = useState([]);
+  const [contactsData, updateContactsData] = useState(null);
   const [cardData, setCardData] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(true);
   const [updateContacts, setUpdateContacts] = useState(null);
@@ -51,7 +51,6 @@ const Contacts = () => {
     await deleteContacts(id);
     setShowDeleteWarning(false);
     setUpdateContacts(cid);
-    setSelectedContacts([]);
   };
 
   const handleSelectAll = () => {
@@ -78,20 +77,16 @@ const Contacts = () => {
     };
 
     fetchData();
+    setSelectedContacts([]);
   }, [updateContacts, dataLength, startFrom]);
 
   useEffect(() => {
-    if (selectedContacts.length == contactsData.length) {
+    if (contactsData && selectedContacts.length == contactsData.length) {
       setAllSelected(true);
     } else {
       setAllSelected(false);
     }
   }, [selectedContacts]);
-
-  useEffect(() => {
-    setSelectedContacts([]);
-    setAllSelected(false);
-  }, [dataLength]);
 
   useEffect(() => {
     document.addEventListener("click", closeBulkActionMenu, true);
