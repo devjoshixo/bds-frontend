@@ -1,4 +1,4 @@
-import styles from "./PageBody.module.css";
+import styles from "./PageBody.module.scss";
 import { FaWhatsappSquare } from "react-icons/fa";
 import { MdBusinessCenter } from "react-icons/md";
 

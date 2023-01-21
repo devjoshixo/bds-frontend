@@ -1,4 +1,5 @@
 import ContactCardButton from "./contactcardbutton/ContactCardButton";
+import styles from "./Contacts.module.scss";
 
 const ContactRow = (props) => {
   const handleChange = () => {
@@ -14,7 +15,11 @@ const ContactRow = (props) => {
     var list = [];
     for (let i of props.availableFields) {
       console.log(i.title);
-      list.push(<td className={styles.customfielddata}>{props.contact.CustomFields[`${i["title"]}`]}</td>);
+      list.push(
+        <td className={styles.customfielddata}>
+          {props.contact.CustomFields[`${i["title"]}`]}
+        </td>
+      );
     }
     console.log(list);
     return list;

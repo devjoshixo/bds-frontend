@@ -24,6 +24,12 @@
   color: #071e2a;
   letter-spacing: 0.3rem;
   font-weight: 900;
+
+  @media screen and (max-width: 900px) {
+    font-size: 1.8rem;
+    width: 90%;
+    height: auto;
+  }
 }
 .pagebody {
   margin-top: 5rem;

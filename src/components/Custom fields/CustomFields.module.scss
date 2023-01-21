@@ -21,19 +21,6 @@
   }
 }
 
-.tablehead {
-  background-color: rgb(212, 234, 255);
-  height: 2rem;
-  color: rgb(70, 84, 101);
-  font-weight: 500;
-  font-size: 1rem;
-  text-align: left;
-  padding-left: 0.4rem;
-  border-bottom: 0.1px solid rgb(130, 145, 158);
-  font-family: "Poppins", sans-serif;
-  position: sticky;
-  top: 3.5rem;
-}
 .addnewrowbutton {
   display: flex;
   justify-content: center;
@@ -55,6 +42,40 @@
 .customfieldstable {
   margin-top: 0rem;
   overflow: scroll;
+
+  @media screen and (max-width: 900px) {
+    td {
+      display: flex;
+      height: auto;
+
+      &::before {
+        content: attr(label);
+        font-weight: bold;
+        width: 120px;
+        min-width: 120px;
+      }
+    }
+    tr {
+      border-bottom: 0.1px solid rgb(130, 145, 158);
+    }
+  }
+}
+.tablehead {
+  background-color: rgb(212, 234, 255);
+  height: 2rem;
+  color: rgb(70, 84, 101);
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: left;
+  padding-left: 0.4rem;
+  border-bottom: 0.1px solid rgb(130, 145, 158);
+  font-family: "Poppins", sans-serif;
+  position: sticky;
+  top: 3.5rem;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 }
 .customfieldcontainer::-webkit-scrollbar {
   width: 0.5rem;
