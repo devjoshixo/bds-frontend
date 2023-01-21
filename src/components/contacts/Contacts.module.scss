@@ -251,3 +251,34 @@ td {
 .bulkactions_option:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
+
+.contacts {
+  @media screen and (max-width: 900px) {
+    th {
+      display: none;
+
+      &:nth-child(1) {
+        display: table-cell;
+      }
+      &:nth-child(2) {
+        display: table-cell;
+      }
+      &:nth-child(3) {
+        display: table-cell;
+      }
+    }
+    td {
+      display: none;
+
+      &:nth-child(1) {
+        display: table-cell;
+      }
+      &:nth-child(2) {
+        display: table-cell;
+      }
+      &:nth-child(3) {
+        display: table-cell;
+      }
+    }
+  }
+}
