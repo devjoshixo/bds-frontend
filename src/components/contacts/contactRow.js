@@ -14,14 +14,12 @@ const ContactRow = (props) => {
   const fillCustomFields = () => {
     var list = [];
     for (let i of props.availableFields) {
-      console.log(i.title);
       list.push(
         <td className={styles.customfielddata}>
           {props.contact.CustomFields[`${i["title"]}`]}
         </td>
       );
     }
-    console.log(list);
     return list;
   };
 
