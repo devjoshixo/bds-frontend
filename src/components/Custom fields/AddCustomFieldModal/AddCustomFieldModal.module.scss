@@ -68,6 +68,7 @@
   flex-direction: column;
 }
 .closecard {
+  cursor: pointer;
   position: absolute;
   height: 3rem;
   width: 3rem;
@@ -97,4 +98,5 @@
   background-color: #274865;
   color: aliceblue;
   font-size: 0.9rem;
+  border: none;
 }
