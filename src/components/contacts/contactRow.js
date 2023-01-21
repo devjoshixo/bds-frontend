@@ -10,6 +10,15 @@ const ContactRow = (props) => {
       props.setSelectedContacts([...props.selectedContacts, props.cid]);
     }
   };
+  const fillCustomFields = () => {
+    var list = [];
+    for (let i of props.availableFields) {
+      console.log(i.title);
+      list.push(<td className={styles.customfielddata}>{props.contact.CustomFields[`${i["title"]}`]}</td>);
+    }
+    console.log(list);
+    return list;
+  };
 
   return (
     <tr id={`${props.cid}`}>
@@ -37,6 +46,7 @@ const ContactRow = (props) => {
       <td>{props.mobile}</td>
       <td>{props.whatsappMobile}</td>
       <td>{props.email}</td>
+      {fillCustomFields()}
     </tr>
   );
 };

@@ -5,6 +5,7 @@ import ContactRow from "./ContactRow";
 import { useEffect } from "react";
 import { useState, useRef } from "react";
 import fetchContacts from "../../API calls/fetchContacts";
+import fetchCustomFields from "../../API calls/fetchCustomFields";
 import Loader from "../loader/Loader";
 import deleteContacts from "../../API calls/deleteContact";
 import DeleteContactModal from "./deleteContactModal/deleteContactModal";
@@ -27,6 +28,7 @@ const Contacts = () => {
   const [bulkOptionsStatus, setBulkOptionStatus] = useState(false);
   const bulkOptions = useRef(null);
   const [addContactModalStatus, setAddContactModalStatus] = useState(false);
+  const [availableFields, setAvailableFields] = useState(null);
 
   const bulkOptiontoggle = () => {
     setBulkOptionStatus(!bulkOptionsStatus);
@@ -69,8 +71,12 @@ const Contacts = () => {
   useEffect(() => {
     const fetchData = async () => {
       updateContactsData(await fetchContacts(startFrom, dataLength));
+
+      setAvailableFields(await fetchCustomFields());
+
       setLoadingStatus(false);
     };
+
     fetchData();
   }, [updateContacts, dataLength, startFrom]);
 
@@ -106,14 +112,23 @@ const Contacts = () => {
           whatsappMobile={contact["whatsappMobile"]}
           key={contact["_id"]}
           cid={contact["_id"]}
+          contact={contact}
           CardOpenHandler={CardOpenHandler}
           showDeleteWarningHandler={showDeleteWarningHandler}
           selectedContacts={selectedContacts}
           setSelectedContacts={setSelectedContacts}
+          availableFields={availableFields}
         />
       );
     }
     return list;
+  };
+  const addFieldName = () => {
+    var fieldNames = [];
+    for (let i of availableFields) {
+      fieldNames.push(<th className={styles.customfield}>{i.title}</th>);
+    }
+    return fieldNames;
   };
 
   return (
@@ -154,11 +169,11 @@ const Contacts = () => {
                   </div>
                 </th>
                 <th>actions</th>
-
                 <th>Name</th>
                 <th>mobile</th>
                 <th>W.A. Mobile</th>
                 <th>E.mail</th>
+                {addFieldName()}
               </tr>
               {addNewRow()}
             </tbody>
