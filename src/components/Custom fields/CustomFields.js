@@ -5,12 +5,15 @@ import fetchCustomFields from "../../API calls/fetchCustomFields";
 import deleteCustomField from "../../API calls/deleteCustomFields";
 import DeleteCustomFieldModal from "./deleteCustomFieldModal/deleteCustomFieldModal";
 import { IoAdd } from "react-icons/io5";
+import AddCustomFieldModal from "./AddCustomFieldModal/AddCustomFieldModal";
 
 const CustomFields = (props) => {
   const [customFieldsData, updateCustomFieldsData] = useState([]);
   const [showDeleteWarning, setShowDeleteWarning] = useState(false);
   const [delArg, detDelArg] = useState("");
   const [updateField, setUpdateField] = useState(null);
+  const [addCustomFieldModalStatus, setAddCustomFieldModalStatus] =
+    useState(false);
 
   const showDeleteWarningHandler = (arg) => {
     detDelArg(arg);
@@ -31,8 +34,21 @@ const CustomFields = (props) => {
   }, [updateField]);
   return (
     <div className={styles.customfieldcontainer}>
+      {addCustomFieldModalStatus && (
+        <AddCustomFieldModal
+          closeCard={() => {
+            setAddCustomFieldModalStatus(false);
+          }}
+          updateField={setUpdateField}
+        />
+      )}
       <div className={styles.buttonssection}>
-        <div className={styles.addnewrowbutton}>
+        <div
+          className={styles.addnewrowbutton}
+          onClick={() => {
+            setAddCustomFieldModalStatus(true);
+          }}
+        >
           <IoAdd />
           Add Custom Field
         </div>

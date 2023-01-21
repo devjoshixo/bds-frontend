@@ -37,21 +37,26 @@ const AddContactModal = (props) => {
       mobile: mobile,
     };
 
-    await addContact(contact);
-    props.closeCard();
-    props.updateContacts(contact.email);
+    var status = await addContact(contact);
+    if (status == 409) {
+      alert("Contact with same Email ID already exists");
+    } else {
+      props.closeCard();
+      props.updateContacts(contact.email);
+    }
   };
   return (
     <div className={styles.backdrop}>
       <div className={styles.addmodal}>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            addContactHandler();
-          }}
-        >
-          <div className={styles.header}>ADD CONTACT</div>
-          <div className={styles.addcontactform}>
+        <div className={styles.header}>ADD CONTACT</div>
+        <div className={styles.addcontactform}>
+          <form
+            id="addContactForm"
+            onSubmit={(e) => {
+              e.preventDefault();
+              addContactHandler();
+            }}
+          >
             <label className={styles.inputfield}>
               Name
               <input
@@ -92,16 +97,19 @@ const AddContactModal = (props) => {
                 onChange={handleInputChange}
               />
             </label>
+          </form>
+        </div>
+        <div className={styles.footer}>
+          <div className={styles.closecard} onClick={props.closeCard}>
+            <CgClose size={25} />
           </div>
-          <div className={styles.footer}>
-            <div className={styles.closecard} onClick={props.closeCard}>
-              <CgClose size={25} />
-            </div>
-            <button className={styles.submitcard} type="submit">
-              Add
-            </button>
-          </div>
-        </form>
+          <input
+            className={styles.submitcard}
+            form="addContactForm"
+            value="Add"
+            type="submit"
+          />
+        </div>
       </div>
     </div>
   );

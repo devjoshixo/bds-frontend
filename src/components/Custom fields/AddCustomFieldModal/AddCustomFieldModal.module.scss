@@ -36,7 +36,7 @@
   color: aliceblue;
 }
 
-.addcontactform {
+.addfieldform {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,7 +63,7 @@
   display: flex;
   height: 3rem;
   width: 100%;
-  // background-color: #0a2b3d;
+  //   background-color: #0a2b3d;
   align-items: center;
   flex-direction: column;
 }
@@ -97,5 +97,4 @@
   background-color: #274865;
   color: aliceblue;
   font-size: 0.9rem;
-  border: none;
 }
