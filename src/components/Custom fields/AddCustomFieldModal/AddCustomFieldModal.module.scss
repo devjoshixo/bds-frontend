@@ -129,3 +129,15 @@
 .optionfield {
   width: 10rem;
 }
+.loaderbackdrop {
+  backdrop-filter: blur(1px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2000000;
+  width: 30rem;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

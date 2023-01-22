@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./AddCustomFieldModal.module.scss";
 import { CgClose } from "react-icons/cg";
 import addCustomField from "../../../API calls/addCustomField";
+import Loader from "../../loader/Loader";
 
 const AddCustomFieldModal = (props) => {
   const [customFieldName, setCustomFieldName] = useState("");
@@ -9,8 +10,10 @@ const AddCustomFieldModal = (props) => {
   const [customFieldDes, setCustomFieldDes] = useState("");
   const [customOptions, setCustomOptions] = useState([]);
   const [optionsArray, setOptionsArray] = useState([]);
+  const [loadingStatus, setLoadingStatus] = useState(true);
 
   const addCustomFieldHandler = async () => {
+    setLoadingStatus(true);
     const customField = {
       title: customFieldName,
       type: customFieldType,
@@ -18,8 +21,10 @@ const AddCustomFieldModal = (props) => {
     };
     var status = await addCustomField(customField);
     if (status == 409) {
+      setLoadingStatus(false);
       alert("Custom Field already exists");
     } else {
+      setLoadingStatus(false);
       props.closeCard();
       props.updateField(customField);
     }
@@ -57,6 +62,11 @@ const AddCustomFieldModal = (props) => {
       <div className={styles.addmodal}>
         <div className={styles.header}>ADD CUSTOM FIELD</div>
         <div className={styles.addfieldform}>
+          {loadingStatus && (
+            <div className={styles.loaderbackdrop}>
+              <Loader />
+            </div>
+          )}
           <form
             className={styles.addCustomFieldForm}
             id="addCustomFieldForm"
