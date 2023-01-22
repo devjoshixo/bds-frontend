@@ -1,12 +1,14 @@
+import { useEffect, useState } from "react";
+
+import { fetchCustomFields, deleteCustomField } from "../../API calls";
+
+import { IoAdd } from "react-icons/io5";
+import Loader from "../loader/Loader";
+
 import styles from "./CustomFields.module.scss";
 import CustomFieldRow from "./CustomFieldRow";
-import { useEffect, useState } from "react";
-import fetchCustomFields from "../../API calls/fetchCustomFields";
-import deleteCustomField from "../../API calls/deleteCustomFields";
 import DeleteCustomFieldModal from "./deleteCustomFieldModal/deleteCustomFieldModal";
-import { IoAdd } from "react-icons/io5";
 import AddCustomFieldModal from "./AddCustomFieldModal/AddCustomFieldModal";
-import Loader from "../loader/Loader";
 
 const CustomFields = (props) => {
   const [customFieldsData, updateCustomFieldsData] = useState([]);

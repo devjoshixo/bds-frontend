@@ -1,16 +1,19 @@
-import React from "react";
-import styles from "./Contacts.module.scss";
-import ContactCard from "./userCard/ContactCard";
-import ContactRow from "./ContactRow";
-import { useEffect } from "react";
-import { useState, useRef } from "react";
-import fetchContacts from "../../API calls/fetchContacts";
-import fetchCustomFields from "../../API calls/fetchCustomFields";
-import Loader from "../loader/Loader";
-import deleteContacts from "../../API calls/deleteContact";
-import DeleteContactModal from "./deleteContactModal/deleteContactModal";
-import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
+import React, { useEffect, useState, useRef } from "react";
+
+import {
+  fetchContacts,
+  deleteContacts,
+  fetchCustomFields,
+} from "../../API calls";
+
 import { IoAdd } from "react-icons/io5";
+import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
+import Loader from "../loader/Loader";
+
+import styles from "./Contacts.module.scss";
+import ContactRow from "./ContactRow";
+import ContactCard from "./userCard/ContactCard";
+import DeleteContactModal from "./deleteContactModal/deleteContactModal";
 import AddContactModal from "./addContactModal/AddContactModal";
 
 const Contacts = () => {

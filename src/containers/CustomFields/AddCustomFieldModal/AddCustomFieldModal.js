@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import styles from "./AddCustomFieldModal.module.scss";
+
+import { addCustomField } from "../../../API calls";
+
 import { CgClose } from "react-icons/cg";
-import addCustomField from "../../../API calls/addCustomField";
 import Loader from "../../loader/Loader";
+
+import styles from "./AddCustomFieldModal.module.scss";
 
 const AddCustomFieldModal = (props) => {
   const [customFieldName, setCustomFieldName] = useState("");

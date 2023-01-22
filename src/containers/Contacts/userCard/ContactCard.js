@@ -1,5 +1,6 @@
-import styles from "./ContactCard.module.scss";
 import { useEffect, useState } from "react";
+
+import styles from "./ContactCard.module.scss";
 
 const ContactCard = (props) => {
   const [customFieldsData, setCustomFieldsData] = useState({});
