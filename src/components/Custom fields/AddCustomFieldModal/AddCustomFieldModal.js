@@ -10,7 +10,7 @@ const AddCustomFieldModal = (props) => {
   const [customFieldDes, setCustomFieldDes] = useState("");
   const [customOptions, setCustomOptions] = useState([]);
   const [optionsArray, setOptionsArray] = useState([]);
-  const [loadingStatus, setLoadingStatus] = useState(true);
+  const [loadingStatus, setLoadingStatus] = useState(false);
 
   const addCustomFieldHandler = async () => {
     setLoadingStatus(true);
