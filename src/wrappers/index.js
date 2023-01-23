@@ -1,1 +1,1 @@
-export { default as PageBody } from "./PageBody/PageBody";
+export { default as PageBody } from "./PageBody/PageBody.js";

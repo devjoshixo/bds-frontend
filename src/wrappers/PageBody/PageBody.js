@@ -1,4 +1,5 @@
 import styles from "./PageBody.module.scss";
+
 import { FaWhatsappSquare } from "react-icons/fa";
 import { MdBusinessCenter } from "react-icons/md";
 
@@ -27,4 +28,5 @@ const PageBody = (props) => {
     </div>
   );
 };
+
 export default PageBody;
