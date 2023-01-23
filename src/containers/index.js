@@ -1,3 +1,3 @@
-export { default as Contacts } from "./Contacts/Contacts";
-export { default as CustomFields } from "./CustomFields/CustomFields";
-export { default as Dashboard } from "./Dashboard/Dashboard";
+export { default as Contacts } from "./Contacts/Contacts.js";
+export { default as CustomFields } from "./CustomFields/CustomFields.js";
+export { default as Dashboard } from "./Dashboard/Dashboard.js";
