@@ -8,7 +8,7 @@ import {
 
 import { IoAdd } from "react-icons/io5";
 import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
-import Loader from "../loader/Loader";
+import { Loader } from "../../components";
 
 import styles from "./Contacts.module.scss";
 import ContactRow from "./ContactRow";

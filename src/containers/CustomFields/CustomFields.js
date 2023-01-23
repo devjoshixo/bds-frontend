@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchCustomFields, deleteCustomField } from "../../API calls";
 
 import { IoAdd } from "react-icons/io5";
-import Loader from "../loader/Loader";
+import { Loader } from "../../components";
 
 import styles from "./CustomFields.module.scss";
 import CustomFieldRow from "./CustomFieldRow";

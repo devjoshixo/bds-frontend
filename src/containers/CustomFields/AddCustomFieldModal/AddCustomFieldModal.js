@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { addCustomField } from "../../../API calls";
 
 import { CgClose } from "react-icons/cg";
-import Loader from "../../loader/Loader";
+import { Loader } from "../../../components";
 
 import styles from "./AddCustomFieldModal.module.scss";
 
