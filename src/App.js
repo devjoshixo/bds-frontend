@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 
 import styles from "./App.module.css";
 
-import { Sidebar, PageBody } from "./wrappers";
+import { PageBody } from "./wrappers";
+
+import { Sidebar } from "./components";
 
 import { Contacts, Dashboard, CustomFields } from "./containers";
 
