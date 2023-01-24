@@ -4,6 +4,7 @@ import styles from "./ContactCard.module.scss";
 
 const ContactCard = (props) => {
   const [customFieldsData, setCustomFieldsData] = useState({});
+  const [contactData, setContactData] = useState({});
 
   const fetchfieldtype = async (name) => {
     const response = await fetch(
@@ -24,7 +25,7 @@ const ContactCard = (props) => {
 
   const addCustomFieldsTitle = () => {
     var list = [];
-    let keys = Object.keys(props.userData.CustomFields);
+    let keys = Object.keys(customFieldsData);
     for (let i of keys) {
       list.push(
         <>
@@ -38,7 +39,7 @@ const ContactCard = (props) => {
 
   const addCustomFieldsData = () => {
     var list = [];
-    let keys = Object.keys(props.userData.CustomFields);
+    let keys = Object.keys(customFieldsData);
     for (let i of keys) {
       list.push(
         <>
@@ -56,9 +57,20 @@ const ContactCard = (props) => {
   };
 
   const handleChange = (e) => {
-    var obj = { ...customFieldsData };
-    obj[`${e.target.name}`] = e.target.value;
-    setCustomFieldsData({ ...obj });
+    if (
+      e.target.name == "name" ||
+      e.target.name == "email" ||
+      e.target.name == "mobile" ||
+      e.target.name == "whatsappMobile"
+    ) {
+      var obj = { ...contactData };
+      obj[`${e.target.name}`] = e.target.value;
+      setContactData({ ...obj });
+    } else {
+      var obj = { ...customFieldsData };
+      obj[`${e.target.name}`] = e.target.value;
+      setCustomFieldsData({ ...obj });
+    }
   };
 
   useEffect(() => {
@@ -68,6 +80,13 @@ const ContactCard = (props) => {
       obj[`${i}`] = props.userData.CustomFields[`${i}`];
     }
     setCustomFieldsData(obj);
+
+    setContactData({
+      name: props.userData.name,
+      email: props.userData.email,
+      mobile: props.userData.mobile,
+      whatsappMobile: props.userData.whatsappMobile,
+    });
   }, []);
 
   return (
@@ -106,13 +125,35 @@ const ContactCard = (props) => {
             <div
               className={`${styles.detailvalues} ${styles.detailsubcontainer}`}
             >
-              {props.userData.name}
+              <input
+                name="name"
+                type="text"
+                onChange={handleChange}
+                value={contactData.name}
+              />
               <br />
-              {props.userData.mobile}
+              <input
+                name="mobile"
+                type="tel"
+                pattern="[0-9]{10}"
+                onChange={handleChange}
+                value={contactData.mobile}
+              />
               <br />
-              {props.userData.email}
+              <input
+                name="email"
+                type="email"
+                onChange={handleChange}
+                value={contactData.email}
+              />
               <br />
-              {props.userData.whatsappMobile}
+              <input
+                name="whatsappMobile"
+                type="tel"
+                pattern="[0-9]{10}"
+                onChange={handleChange}
+                value={contactData.whatsappMobile}
+              />
               {props.userData.CustomFields && addCustomFieldsData()}
             </div>
           </div>
