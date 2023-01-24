@@ -34,22 +34,19 @@ const ContactRow = (props) => {
       </td>
       <td>
         <ContactCardButton
-          CustomFields={props.contact.CustomFields}
-          CardOpenHandler={props.CardOpenHandler}
-          name={props.name}
-          mobile={props.mobile}
-          email={props.email}
-          whatsappMobile={props.whatsappMobile}
           cid={props.cid}
-          fetchData={props.fetchData}
+          contact={props.contact}
+          CardOpenHandler={props.CardOpenHandler}
           showDeleteWarningHandler={props.showDeleteWarningHandler}
         />
       </td>
 
-      <td>{`${props.name.split(" ")[0]} ${props.name.split(" ")[1]}`}</td>
-      <td>{props.mobile}</td>
-      <td>{props.whatsappMobile}</td>
-      <td>{props.email}</td>
+      <td>{`${props.contact.name.split(" ")[0]} ${
+        props.contact.name.split(" ")[1]
+      }`}</td>
+      <td>{props.contact.mobile}</td>
+      <td>{props.contact.whatsappMobile}</td>
+      <td>{props.contact.email}</td>
       {fillCustomFields()}
     </tr>
   );

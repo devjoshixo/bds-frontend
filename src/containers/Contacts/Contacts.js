@@ -104,10 +104,6 @@ const Contacts = () => {
       var contact = contactsData[i];
       list.push(
         <ContactRow
-          name={contact["name"]}
-          email={contact["email"]}
-          mobile={contact["mobile"]}
-          whatsappMobile={contact["whatsappMobile"]}
           key={contact["_id"]}
           cid={contact["_id"]}
           contact={contact}

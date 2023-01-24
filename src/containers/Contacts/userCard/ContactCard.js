@@ -1,25 +1,34 @@
 import { useEffect, useState } from "react";
 
+import { RiEdit2Fill } from "react-icons/ri";
+
 import styles from "./ContactCard.module.scss";
 
 const ContactCard = (props) => {
   const [customFieldsData, setCustomFieldsData] = useState({});
   const [contactData, setContactData] = useState({});
+  const [editToggle, setEditToggle] = useState(false);
 
   const fetchfieldtype = async (name) => {
-    const response = await fetch(
-      "http://localhost:5000/contacts/customfield/type?title=" + name
-    ).then((res) => res.text());
+    try {
+      const response = await fetch(
+        "http://localhost:5000/contacts/customfield/type?title=" + name
+      ).then((res) => res.text());
 
-    switch (response) {
-      case "Text":
-        return "text";
-      case "Number":
-        return "number";
-      case "Date":
-        return "date";
-      default:
-        break;
+      switch (response) {
+        case "Text":
+          return "text";
+        case "Number":
+          return "number";
+        case "Date":
+          return "date";
+        default:
+          break;
+      }
+    } catch (error) {
+      //temporary jugad
+      console.log(error);
+      return "text";
     }
   };
 
@@ -44,12 +53,16 @@ const ContactCard = (props) => {
       list.push(
         <>
           <br />
-          <input
-            type={fetchfieldtype(i)}
-            value={customFieldsData[`${i}`]}
-            name={i}
-            onChange={handleChange}
-          />
+          {editToggle ? (
+            <input
+              type={fetchfieldtype(i)}
+              value={customFieldsData[`${i}`]}
+              name={i}
+              onChange={handleChange}
+            />
+          ) : (
+            customFieldsData[`${i}`]
+          )}
         </>
       );
     }
@@ -101,7 +114,7 @@ const ContactCard = (props) => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
               onClick={() => {
-                props.showDeleteWarningHandler(props.userData.cid);
+                props.showDeleteWarningHandler(props.userData._id);
               }}
             >
               <path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" />
@@ -125,35 +138,51 @@ const ContactCard = (props) => {
             <div
               className={`${styles.detailvalues} ${styles.detailsubcontainer}`}
             >
-              <input
-                name="name"
-                type="text"
-                onChange={handleChange}
-                value={contactData.name}
-              />
+              {editToggle ? (
+                <input
+                  name="name"
+                  type="text"
+                  onChange={handleChange}
+                  value={contactData.name}
+                />
+              ) : (
+                contactData.name
+              )}
               <br />
-              <input
-                name="mobile"
-                type="tel"
-                pattern="[0-9]{10}"
-                onChange={handleChange}
-                value={contactData.mobile}
-              />
+              {editToggle ? (
+                <input
+                  name="mobile"
+                  type="tel"
+                  pattern="[0-9]{10}"
+                  onChange={handleChange}
+                  value={contactData.mobile}
+                />
+              ) : (
+                contactData.mobile
+              )}
               <br />
-              <input
-                name="email"
-                type="email"
-                onChange={handleChange}
-                value={contactData.email}
-              />
+              {editToggle ? (
+                <input
+                  name="email"
+                  type="email"
+                  onChange={handleChange}
+                  value={contactData.email}
+                />
+              ) : (
+                contactData.email
+              )}
               <br />
-              <input
-                name="whatsappMobile"
-                type="tel"
-                pattern="[0-9]{10}"
-                onChange={handleChange}
-                value={contactData.whatsappMobile}
-              />
+              {editToggle ? (
+                <input
+                  name="whatsappMobile"
+                  type="tel"
+                  pattern="[0-9]{10}"
+                  onChange={handleChange}
+                  value={contactData.whatsappMobile}
+                />
+              ) : (
+                contactData.whatsappMobile
+              )}
               {props.userData.CustomFields && addCustomFieldsData()}
             </div>
           </div>
