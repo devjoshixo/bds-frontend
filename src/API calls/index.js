@@ -4,4 +4,4 @@ export { default as deleteContacts } from "./deleteContacts";
 export { default as deleteCustomField } from "./deleteCustomField";
 export { default as fetchContacts } from "./fetchContacts";
 export { default as fetchCustomFields } from "./fetchCustomFields";
-export { default as updateContact } from "./updateContact";
+export { default as editContact } from "./editContact";
