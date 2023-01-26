@@ -56,7 +56,9 @@
   // top: 1.65rem;
   gap: 1rem;
   // background-color: #0a2b3d;
-
+  input {
+    display: none;
+  }
   svg {
     width: 1rem;
     transition: all 0.3s;

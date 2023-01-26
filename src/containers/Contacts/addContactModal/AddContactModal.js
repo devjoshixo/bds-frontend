@@ -86,7 +86,7 @@ const AddContactModal = (props) => {
                 name="mobile"
                 value={mobile}
                 type="tel"
-                pattern="[0-9]{10}"
+                pattern="+91[0-9]{10}"
                 onChange={handleInputChange}
                 required
               />
@@ -97,6 +97,7 @@ const AddContactModal = (props) => {
                 name="whatsappMobile"
                 value={whatsappMobile}
                 type="tel"
+                pattern="+91[0-9]{10}"
                 onChange={handleInputChange}
               />
             </label>
