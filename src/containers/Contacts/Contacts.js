@@ -50,11 +50,10 @@ const Contacts = () => {
     setBulkOptionStatus(false);
   };
   const deleteRowHandler = async (cid) => {
-    console.log("delete row handler called");
     var id = typeof cid == "string" ? [cid] : cid;
-    console.log("id: " + id);
     await deleteContacts(id);
     setShowDeleteWarning(false);
+    cardStatus && SetCardStatus(false);
     setUpdateContacts(cid);
   };
 
@@ -109,7 +108,6 @@ const Contacts = () => {
           contact={contact}
           CardOpenHandler={() => CardOpenHandler(contact)}
           showDeleteWarningHandler={() => {
-            console.log("delete req for: " + contact["name"]);
             showDeleteWarningHandler(contact["_id"]);
           }}
           selectedContacts={selectedContacts}
@@ -186,7 +184,6 @@ const Contacts = () => {
               setShowDeleteWarning(false);
             }}
             delete={() => {
-              console.log("delete invoked");
               deleteRowHandler(delCid);
               if (delCid == cardData._id) {
                 SetCardStatus(false);
@@ -196,6 +193,7 @@ const Contacts = () => {
         ) : null}
         {cardStatus && (
           <ContactCard
+            updateDom={setUpdateContacts}
             showDeleteWarningHandler={() =>
               showDeleteWarningHandler(cardData._id)
             }

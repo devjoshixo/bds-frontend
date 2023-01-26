@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { RiEdit2Fill } from "react-icons/ri";
+import { editContact } from "../../../API calls";
+
+import { RiEdit2Fill, RiSave2Fill } from "react-icons/ri";
 
 import styles from "./ContactCard.module.scss";
 
@@ -37,10 +39,10 @@ const ContactCard = (props) => {
     let keys = Object.keys(customFieldsData);
     for (let i of keys) {
       list.push(
-        <>
+        <div key={i}>
           <br />
           {i}
-        </>
+        </div>
       );
     }
     return list;
@@ -51,7 +53,7 @@ const ContactCard = (props) => {
     let keys = Object.keys(customFieldsData);
     for (let i of keys) {
       list.push(
-        <>
+        <div>
           <br />
           {editToggle ? (
             <input
@@ -63,7 +65,7 @@ const ContactCard = (props) => {
           ) : (
             customFieldsData[`${i}`]
           )}
-        </>
+        </div>
       );
     }
     return list;
@@ -84,6 +86,19 @@ const ContactCard = (props) => {
       obj[`${e.target.name}`] = e.target.value;
       setCustomFieldsData({ ...obj });
     }
+  };
+
+  const editContactHandler = async () => {
+    var contactobj = { ...props.userData };
+    let keys = Object.keys(contactData);
+    for (let i of keys) {
+      contactobj[`${i}`] = contactData[`${i}`];
+    }
+    contactobj.CustomFields = customFieldsData;
+
+    await editContact(contactobj);
+    setEditToggle(false);
+    props.updateDom([contactData, customFieldsData]);
   };
 
   useEffect(() => {
@@ -111,6 +126,7 @@ const ContactCard = (props) => {
           <div className={styles.username}>{props.userData.name}</div>
           <div className={styles.buttonscontainer}>
             <svg
+              id={styles.del_button}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
               onClick={() => {
@@ -119,6 +135,19 @@ const ContactCard = (props) => {
             >
               <path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" />
             </svg>
+            {editToggle ? (
+              <RiSave2Fill
+                onClick={() => {
+                  editContactHandler();
+                }}
+              />
+            ) : (
+              <RiEdit2Fill
+                onClick={() => {
+                  setEditToggle(true);
+                }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.cardbody}>

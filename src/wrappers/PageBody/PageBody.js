@@ -23,8 +23,8 @@ const PageBody = (props) => {
       </div>
       {/* pagebody */}
       <div className={styles.pagebody}>{props.children}</div>
-      <div id="bar1" className={styles.sideoverlay} />
-      <div id="bar2" className={styles.sideoverlay} />
+      <div id={styles.bar1} className={styles.sideoverlay} />
+      <div id={styles.bar2} className={styles.sideoverlay} />
     </div>
   );
 };
