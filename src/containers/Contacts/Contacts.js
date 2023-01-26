@@ -50,7 +50,9 @@ const Contacts = () => {
     setBulkOptionStatus(false);
   };
   const deleteRowHandler = async (cid) => {
+    console.log("delete row handler called");
     var id = typeof cid == "string" ? [cid] : cid;
+    console.log("id: " + id);
     await deleteContacts(id);
     setShowDeleteWarning(false);
     setUpdateContacts(cid);
@@ -100,15 +102,16 @@ const Contacts = () => {
 
   const addNewRow = () => {
     var list = [];
-    for (var i in contactsData) {
-      var contact = contactsData[i];
+    for (let contact of contactsData) {
       list.push(
         <ContactRow
           key={contact["_id"]}
-          cid={contact["_id"]}
           contact={contact}
-          CardOpenHandler={CardOpenHandler}
-          showDeleteWarningHandler={showDeleteWarningHandler}
+          CardOpenHandler={() => CardOpenHandler(contact)}
+          showDeleteWarningHandler={() => {
+            console.log("delete req for: " + contact["name"]);
+            showDeleteWarningHandler(contact["_id"]);
+          }}
           selectedContacts={selectedContacts}
           setSelectedContacts={setSelectedContacts}
           availableFields={availableFields}
@@ -182,15 +185,20 @@ const Contacts = () => {
             cancel={() => {
               setShowDeleteWarning(false);
             }}
-            cid={delCid}
-            delete={deleteRowHandler}
-            userData={cardData}
-            setCardStatus={SetCardStatus}
+            delete={() => {
+              console.log("delete invoked");
+              deleteRowHandler(delCid);
+              if (delCid == cardData._id) {
+                SetCardStatus(false);
+              }
+            }}
           />
         ) : null}
         {cardStatus && (
           <ContactCard
-            showDeleteWarningHandler={showDeleteWarningHandler}
+            showDeleteWarningHandler={() =>
+              showDeleteWarningHandler(cardData._id)
+            }
             cardStatus={cardStatus}
             CardCloseHandler={CardCloseHandler}
             userData={cardData}

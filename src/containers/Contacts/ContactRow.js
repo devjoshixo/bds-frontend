@@ -3,12 +3,12 @@ import styles from "./Contacts.module.scss";
 
 const ContactRow = (props) => {
   const handleChange = () => {
-    if (props.selectedContacts.includes(props.cid)) {
+    if (props.selectedContacts.includes(props.contact._id)) {
       props.setSelectedContacts(
-        props.selectedContacts.filter((item) => item !== props.cid)
+        props.selectedContacts.filter((item) => item !== props.contact._id)
       );
     } else {
-      props.setSelectedContacts([...props.selectedContacts, props.cid]);
+      props.setSelectedContacts([...props.selectedContacts, props.contact._id]);
     }
   };
   const fillCustomFields = () => {
@@ -24,18 +24,16 @@ const ContactRow = (props) => {
   };
 
   return (
-    <tr id={`${props.cid}`}>
+    <tr id={`${props.contact._id}`}>
       <td>
         <input
           type="checkbox"
-          checked={props.selectedContacts.includes(props.cid)}
+          checked={props.selectedContacts.includes(props.contact._id)}
           onChange={handleChange}
         />
       </td>
       <td>
         <ContactCardButton
-          cid={props.cid}
-          contact={props.contact}
           CardOpenHandler={props.CardOpenHandler}
           showDeleteWarningHandler={props.showDeleteWarningHandler}
         />
