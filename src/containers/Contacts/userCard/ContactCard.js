@@ -12,25 +12,19 @@ const ContactCard = (props) => {
   const [editToggle, setEditToggle] = useState(false);
 
   const fetchfieldtype = async (name) => {
-    try {
-      const response = await fetch(
-        "http://localhost:5000/contacts/customfield/type?title=" + name
-      ).then((res) => res.text());
+    const response = await fetch(
+      "http://localhost:5000/contacts/customfield/type?title=" + name
+    ).then((res) => res.text());
 
-      switch (response) {
-        case "Text":
-          return "text";
-        case "Number":
-          return "number";
-        case "Date":
-          return "date";
-        default:
-          break;
-      }
-    } catch (error) {
-      //temporary jugad
-      console.log(error);
-      return "text";
+    switch (response) {
+      case "Text":
+        return "text";
+      case "Number":
+        return "number";
+      case "Date":
+        return "date";
+      default:
+        break;
     }
   };
 
@@ -38,12 +32,7 @@ const ContactCard = (props) => {
     var list = [];
     let keys = Object.keys(customFieldsData);
     for (let i of keys) {
-      list.push(
-        <div key={i}>
-          <br />
-          {i}
-        </div>
-      );
+      list.push(<div key={i}>{i}</div>);
     }
     return list;
   };
@@ -54,7 +43,6 @@ const ContactCard = (props) => {
     for (let i of keys) {
       list.push(
         <div>
-          <br />
           {editToggle ? (
             <input
               type={fetchfieldtype(i)}
@@ -216,7 +204,8 @@ const ContactCard = (props) => {
                   <input
                     name="mobile"
                     type="tel"
-                    pattern="+91[0-9]{10}"
+                    pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$"
+                    title="Enter a valid phone number."
                     onChange={handleChange}
                     value={contactData.mobile}
                     required
@@ -233,7 +222,8 @@ const ContactCard = (props) => {
                   <input
                     name="whatsappMobile"
                     type="tel"
-                    pattern="+91[0-9]{10}"
+                    pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$"
+                    title="Enter a valid phone number."
                     onChange={handleChange}
                     value={contactData.whatsappMobile}
                   />

@@ -86,7 +86,8 @@ const AddContactModal = (props) => {
                 name="mobile"
                 value={mobile}
                 type="tel"
-                pattern="+91[0-9]{10}"
+                pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$"
+                title="Enter a valid phone number."
                 onChange={handleInputChange}
                 required
               />
@@ -97,7 +98,8 @@ const AddContactModal = (props) => {
                 name="whatsappMobile"
                 value={whatsappMobile}
                 type="tel"
-                pattern="+91[0-9]{10}"
+                pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$"
+                title="Enter a valid phone number."
                 onChange={handleInputChange}
               />
             </label>
