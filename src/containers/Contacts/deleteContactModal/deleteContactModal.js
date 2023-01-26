@@ -16,12 +16,7 @@ const DeleteContactModal = (props) => {
           </div>
           <div
             className={`${styles.yesbutton} ${styles.modalbutton}`}
-            onClick={() => {
-              props.delete(props.cid);
-              if (props.cid === props.userData.cid) {
-                props.setCardStatus(false);
-              }
-            }}
+            onClick={props.delete}
           >
             Delete
           </div>

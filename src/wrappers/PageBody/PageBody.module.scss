@@ -40,19 +40,16 @@
   overflow: scroll;
   overflow-y: scroll;
 }
-.sideoverlay1 {
+.sideoverlay {
   width: 2rem;
   background-color: aliceblue;
   height: 100%;
   position: absolute;
   top: 0;
+}
+#bar1 {
   left: 2.8rem;
 }
-.sideoverlay2 {
-  width: 2rem;
-  background-color: aliceblue;
-  height: 100%;
-  position: absolute;
-  top: 0;
+#bar2 {
   right: 0;
 }

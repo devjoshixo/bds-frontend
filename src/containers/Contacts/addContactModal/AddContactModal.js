@@ -1,13 +1,16 @@
-import React from "react";
-import styles from "./AddContactModal.module.scss";
+import { useState } from "react";
+
 import addContact from "../../../API calls/addContact";
+
 import { CgClose } from "react-icons/cg";
 
+import styles from "./AddContactModal.module.scss";
+
 const AddContactModal = (props) => {
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [whatsappMobile, setWhatsappMobile] = React.useState("");
-  const [mobile, setMobile] = React.useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [whatsappMobile, setWhatsappMobile] = useState("");
+  const [mobile, setMobile] = useState("");
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

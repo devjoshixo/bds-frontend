@@ -1,10 +1,13 @@
+import { useEffect, useState } from "react";
+
+import { fetchCustomFields, deleteCustomField } from "../../API calls";
+
+import { IoAdd } from "react-icons/io5";
+import { Loader } from "../../components";
+
 import styles from "./CustomFields.module.scss";
 import CustomFieldRow from "./CustomFieldRow";
-import { useEffect, useState } from "react";
-import fetchCustomFields from "../../API calls/fetchCustomFields";
-import deleteCustomField from "../../API calls/deleteCustomFields";
 import DeleteCustomFieldModal from "./deleteCustomFieldModal/deleteCustomFieldModal";
-import { IoAdd } from "react-icons/io5";
 import AddCustomFieldModal from "./AddCustomFieldModal/AddCustomFieldModal";
 
 const CustomFields = (props) => {
@@ -12,32 +15,37 @@ const CustomFields = (props) => {
   const [showDeleteWarning, setShowDeleteWarning] = useState(false);
   const [delArg, detDelArg] = useState("");
   const [updateField, setUpdateField] = useState(null);
-  const [addCustomFieldModalStatus, setAddCustomFieldModalStatus] =
-    useState(false);
+  const [addCustomFieldStatus, setAddCustomFieldStatus] = useState(false);
+  const [loadingStatus, setLoadingStatus] = useState(false);
 
   const showDeleteWarningHandler = (arg) => {
     detDelArg(arg);
     setShowDeleteWarning(true);
   };
   const deleteRowHandler = async (arg) => {
+    setLoadingStatus(true);
     await deleteCustomField(arg);
+    setLoadingStatus(false);
     setShowDeleteWarning(false);
     setUpdateField(arg);
   };
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoadingStatus(true);
       const customFields = await fetchCustomFields();
       updateCustomFieldsData(customFields);
+      setLoadingStatus(false);
     };
     fetchData();
   }, [updateField]);
   return (
     <div className={styles.customfieldcontainer}>
-      {addCustomFieldModalStatus && (
+      {loadingStatus && <Loader />}
+      {addCustomFieldStatus && (
         <AddCustomFieldModal
           closeCard={() => {
-            setAddCustomFieldModalStatus(false);
+            setAddCustomFieldStatus(false);
           }}
           updateField={setUpdateField}
         />
@@ -46,7 +54,7 @@ const CustomFields = (props) => {
         <div
           className={styles.addnewrowbutton}
           onClick={() => {
-            setAddCustomFieldModalStatus(true);
+            setAddCustomFieldStatus(true);
           }}
         >
           <IoAdd />

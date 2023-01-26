@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+
 import styles from "./App.module.css";
-import Sidebar from "./components/sidebar/Sidebar";
-import PageBody from "./components/pagebody/PageBody";
-import Contacts from "./components/contacts/Contacts";
-import Dashboard from "./components/dashboard/Dashboard";
-import CustomFields from "./components/Custom fields/CustomFields";
+
+import { PageBody } from "./wrappers";
+
+import { Sidebar } from "./components";
+
+import { Contacts, Dashboard, CustomFields } from "./containers";
 
 function App() {
   // const sidebarStatus

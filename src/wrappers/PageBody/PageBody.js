@@ -1,4 +1,5 @@
 import styles from "./PageBody.module.scss";
+
 import { FaWhatsappSquare } from "react-icons/fa";
 import { MdBusinessCenter } from "react-icons/md";
 
@@ -22,9 +23,10 @@ const PageBody = (props) => {
       </div>
       {/* pagebody */}
       <div className={styles.pagebody}>{props.children}</div>
-      <div id="bar1" className={styles.sideoverlay1}></div>
-      <div id="bar1" className={styles.sideoverlay2}></div>
+      <div id="bar1" className={styles.sideoverlay} />
+      <div id="bar2" className={styles.sideoverlay} />
     </div>
   );
 };
+
 export default PageBody;

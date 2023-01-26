@@ -1,4 +1,4 @@
-const deleteContact = async (data) => {
+const deleteCustomField = async (data) => {
   var option = {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
@@ -10,4 +10,4 @@ const deleteContact = async (data) => {
   );
   return promise;
 };
-export default deleteContact;
+export default deleteCustomField;

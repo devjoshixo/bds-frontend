@@ -1,16 +1,19 @@
-import React from "react";
-import styles from "./Contacts.module.scss";
-import ContactCard from "./userCard/ContactCard";
-import ContactRow from "./ContactRow";
-import { useEffect } from "react";
-import { useState, useRef } from "react";
-import fetchContacts from "../../API calls/fetchContacts";
-import fetchCustomFields from "../../API calls/fetchCustomFields";
-import Loader from "../loader/Loader";
-import deleteContacts from "../../API calls/deleteContact";
-import DeleteContactModal from "./deleteContactModal/deleteContactModal";
-import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
+import React, { useEffect, useState, useRef } from "react";
+
+import {
+  fetchContacts,
+  deleteContacts,
+  fetchCustomFields,
+} from "../../API calls";
+
 import { IoAdd } from "react-icons/io5";
+import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
+import { Loader } from "../../components";
+
+import styles from "./Contacts.module.scss";
+import ContactRow from "./ContactRow";
+import ContactCard from "./userCard/ContactCard";
+import DeleteContactModal from "./deleteContactModal/deleteContactModal";
 import AddContactModal from "./addContactModal/AddContactModal";
 
 const Contacts = () => {
@@ -47,7 +50,9 @@ const Contacts = () => {
     setBulkOptionStatus(false);
   };
   const deleteRowHandler = async (cid) => {
+    console.log("delete row handler called");
     var id = typeof cid == "string" ? [cid] : cid;
+    console.log("id: " + id);
     await deleteContacts(id);
     setShowDeleteWarning(false);
     setUpdateContacts(cid);
@@ -97,19 +102,16 @@ const Contacts = () => {
 
   const addNewRow = () => {
     var list = [];
-    for (var i in contactsData) {
-      var contact = contactsData[i];
+    for (let contact of contactsData) {
       list.push(
         <ContactRow
-          name={contact["name"]}
-          email={contact["email"]}
-          mobile={contact["mobile"]}
-          whatsappMobile={contact["whatsappMobile"]}
           key={contact["_id"]}
-          cid={contact["_id"]}
           contact={contact}
-          CardOpenHandler={CardOpenHandler}
-          showDeleteWarningHandler={showDeleteWarningHandler}
+          CardOpenHandler={() => CardOpenHandler(contact)}
+          showDeleteWarningHandler={() => {
+            console.log("delete req for: " + contact["name"]);
+            showDeleteWarningHandler(contact["_id"]);
+          }}
           selectedContacts={selectedContacts}
           setSelectedContacts={setSelectedContacts}
           availableFields={availableFields}
@@ -183,15 +185,20 @@ const Contacts = () => {
             cancel={() => {
               setShowDeleteWarning(false);
             }}
-            cid={delCid}
-            delete={deleteRowHandler}
-            userData={cardData}
-            setCardStatus={SetCardStatus}
+            delete={() => {
+              console.log("delete invoked");
+              deleteRowHandler(delCid);
+              if (delCid == cardData._id) {
+                SetCardStatus(false);
+              }
+            }}
           />
         ) : null}
         {cardStatus && (
           <ContactCard
-            showDeleteWarningHandler={showDeleteWarningHandler}
+            showDeleteWarningHandler={() =>
+              showDeleteWarningHandler(cardData._id)
+            }
             cardStatus={cardStatus}
             CardCloseHandler={CardCloseHandler}
             userData={cardData}
